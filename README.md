@@ -46,11 +46,20 @@ Start all Docker services (Relay, Postgres, Grafana, Traefik) -
 
     ./start mazak all
 
-then you can visit the Traefik monitor at
-https://demo-north-monitor.ladder99.com/dashboard/
+## Status
 
-and Grafana on
-https://demo-north.ladder99.com/dashboard/
+See status of services with
+
+    docker ps
+
+## Update
+
+To update code when github repos are updated
+
+    cd ~/ladder99/ladder99-ce
+    ./update mazak
+
+## Source
 
 This setup is based on
 https://www.digitalocean.com/community/tutorials/how-to-use-traefik-v2-as-a-reverse-proxy-for-docker-containers-on-ubuntu-20-04
