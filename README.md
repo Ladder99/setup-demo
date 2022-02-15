@@ -52,6 +52,41 @@ See status of services with
 
     docker ps
 
+## Postgres
+
+To access the database
+
+    docker exec -it postgres bash
+
+then within the postgres container
+
+    psql -U postgres
+
+now can enter SQL and Postgres commands
+
+    psql (13.3)
+    Type "help" for help.
+    postgres=#
+
+eg
+
+    postgres=# \d
+                    List of relations
+    Schema |       Name        |   Type   |  Owner
+    --------+-------------------+----------+----------
+    public | bins              | table    | postgres
+    public | dataitems         | view     | postgres
+    public | devices           | view     | postgres
+    public | edges             | table    | postgres
+    public | history           | table    | postgres
+    public | history_all       | view     | postgres
+    public | history_float     | view     | postgres
+    public | history_text      | view     | postgres
+    public | meta              | table    | postgres
+    public | metrics           | view     | postgres
+    public | nodes             | table    | postgres
+    public | nodes_node_id_seq | sequence | postgres
+
 ## Update
 
 To update code when github repos are updated
