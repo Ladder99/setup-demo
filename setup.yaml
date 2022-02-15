@@ -1,0 +1,11 @@
+client:
+  name: Mazak # not used yet
+  # tell server what timezone to report results in, what timezone schedules are in etc
+  timezoneOffsetHrs: -6 # hrs from GMT
+
+devices:
+  # --------------------------------------------------------------------
+  # micro
+  # --------------------------------------------------------------------
+  - id: d1 # must match id in agent.xml
+    name: M12346 # must match name in agent.cfg and agent.xml
