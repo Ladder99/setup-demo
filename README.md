@@ -6,12 +6,6 @@ This setup uses a Digital Ocean droplet to host the Ladder99 pipeline (Relay, Po
 
 The idea is that the Traefik container will be the only one with port 80 and 443 exposed on an external Docker network.
 
-## Diagram
-
-![](assets/architecture.png)
-
-https://docs.google.com/drawings/d/1bBneF6XSqm4Qls_OiLGLMFbBTbfJwSQ-BV3SmlJ-H90/edit?usp=sharing
-
 ## Links
 
 Grafana
@@ -19,6 +13,12 @@ https://demo-north.ladder99.com
 
 Traefik monitor
 https://demo-north-monitor.ladder99.com
+
+## Diagram
+
+![](assets/architecture.png)
+
+https://docs.google.com/drawings/d/1bBneF6XSqm4Qls_OiLGLMFbBTbfJwSQ-BV3SmlJ-H90/edit?usp=sharing
 
 ## Setup
 
