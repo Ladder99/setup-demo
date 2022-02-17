@@ -2,21 +2,8 @@ version: '3.8'
 
 services:
   traefik:
-    image: traefik:v2.5.3
-    container_name: traefik
     profiles:
-      - traefik
       - all
-    ports:
-      - 80:80/tcp
-      - 443:443/tcp
-    networks:
-      - web
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ../$SETUP/volumes/traefik/traefik.toml:/traefik.toml
-      - ../$SETUP/volumes/traefik/traefik_dynamic.toml:/traefik_dynamic.toml
-      - ../$SETUP/volumes/traefik/acme.json:/acme.json
 
   # note: must set owner of folders with
   # sudo chown -R 0:0 volumes/grafana
@@ -42,10 +29,6 @@ services:
     profiles:
       - all
     environment:
-      # # specify where code can find data.
-      # # can override at run time, eg to run service on windows with node.
-      # L99_SETUP_FOLDER: /data/setup
-      # override these as needed in client's compose-overrides.yaml
       # AGENT_ENDPOINTS: http://agent:5000
       AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717
       # #. will need to boost this as number of devices increases,
@@ -53,10 +36,10 @@ services:
       # FETCH_INTERVAL: 2000
       # FETCH_COUNT: 800
 
+# note: need to create the web network manually with
+#   docker create network web
+# (correct?)
 networks:
   web:
     name: web
     external: true
-  # ladder99:
-  #   name: ladder99
-  #   external: false
