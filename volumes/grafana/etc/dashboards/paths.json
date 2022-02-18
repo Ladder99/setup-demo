@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1645178390679,
+  "iteration": 1645179035190,
   "links": [
     {
       "asDropdown": false,
@@ -614,6 +614,7 @@
       "version": 1
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 31,
   "style": "dark",
   "tags": ["client"],
@@ -653,5 +654,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 13
+  "version": 15
 }
