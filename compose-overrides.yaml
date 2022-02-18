@@ -37,8 +37,7 @@ services:
       # FETCH_COUNT: 800
 
 # note: need to create the web network manually with
-#   docker create network web
-# (correct?)
+#   docker network create web
 networks:
   web:
     name: web
