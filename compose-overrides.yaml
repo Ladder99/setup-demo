@@ -1,10 +1,6 @@
 version: '3.8'
 
 services:
-  traefik:
-    profiles:
-      - all
-
   # note: must set owner of folders with
   # sudo chown -R 0:0 volumes/grafana
   grafana:
@@ -35,6 +31,12 @@ services:
       # # until have automatic rate setting
       # FETCH_INTERVAL: 2000
       # FETCH_COUNT: 800
+
+  traefik:
+    profiles:
+      - all
+    networks:
+      - web
 
 # note: need to create the web network manually with
 #   docker network create web
