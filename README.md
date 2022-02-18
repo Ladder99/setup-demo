@@ -94,6 +94,8 @@ To update code when github repos are updated
     cd ~/ladder99/ladder99-ce
     ./update mazak
 
+this will update both ladder99-ce and client-mazak repos.
+
 ## Source
 
 This setup is based on
