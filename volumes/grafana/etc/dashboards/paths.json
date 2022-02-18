@@ -23,13 +23,14 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
+  "iteration": 1645178390679,
   "links": [
     {
       "asDropdown": false,
       "icon": "external link",
-      "includeVars": false,
-      "keepTime": false,
-      "tags": [],
+      "includeVars": true,
+      "keepTime": true,
+      "tags": ["client"],
       "targetBlank": false,
       "title": "New link",
       "tooltip": "",
@@ -426,8 +427,8 @@
           "inverted": false
         },
         "xAxisExtents": {
-          "min": -25,
-          "max": 25
+          "min": null,
+          "max": null
         },
         "xAxisTitle": {
           "text": "x",
@@ -437,12 +438,12 @@
           "logScale": false
         },
         "xMargins": {
-          "lower": 30,
-          "upper": 10
+          "lower": null,
+          "upper": null
         },
         "yAxisExtents": {
-          "min": -25,
-          "max": 25
+          "min": null,
+          "max": null
         },
         "yAxisTitle": {
           "text": "y",
@@ -452,8 +453,8 @@
           "logScale": false
         },
         "yMargins": {
-          "lower": 20,
-          "upper": 20
+          "lower": null,
+          "upper": null
         }
       },
       "pluginVersion": "7.5.5",
@@ -615,9 +616,34 @@
   ],
   "schemaVersion": 31,
   "style": "dark",
-  "tags": [],
+  "tags": ["client"],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "M12346",
+          "value": "M12346"
+        },
+        "datasource": null,
+        "definition": "select name from devices",
+        "description": "Device Name",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Device",
+        "multi": false,
+        "name": "device",
+        "options": [],
+        "query": "select name from devices",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -627,5 +653,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 7
+  "version": 13
 }
