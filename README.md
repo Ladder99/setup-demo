@@ -96,6 +96,16 @@ To update code when github repos are updated
 
 this will update both ladder99-ce and client-mazak repos.
 
+If you need to update the running Grafana dashboard,
+
+    docker stop grafana
+    ./start mazak grafana
+
+To restart the Relay service,
+
+    docker stop relay
+    ./start mazak relay
+
 ## Source
 
 This setup is based on
