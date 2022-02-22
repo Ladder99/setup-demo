@@ -13,7 +13,7 @@ services:
       - traefik.port=8978
 
   # note: must set owner of folders with
-  # sudo chown -R 0:0 volumes/grafana
+  #   sudo chown -R 0:0 ../client-mazak/volumes/grafana
   grafana:
     profiles:
       - all
@@ -32,10 +32,9 @@ services:
     profiles:
       - all
     environment:
-      # AGENT_ENDPOINTS: http://agent:5000
       AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717
-      # #. will need to boost this as number of devices increases,
-      # # until have automatic rate setting
+      #. will need to boost this as number of devices increases,
+      # until have automatic rate setting
       # FETCH_INTERVAL: 2000
       # FETCH_COUNT: 800
 
