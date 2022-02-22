@@ -5,17 +5,12 @@ services:
     profiles:
       - all
     image: dbeaver/cloudbeaver:21.3.5 # use this for x86 etc
-    # build: {} # turn off the Dockerfile build instructions
     labels:
       - traefik.enable=true
-      - traefik.http.routers.wiki.rule=Host(`demo-north-beaver.ladder99.com`)
-      - traefik.http.routers.wiki.tls=true
-      - traefik.http.routers.wiki.tls.certresolver=lets-encrypt
+      - traefik.http.routers.beav.rule=Host(`demo-north-beaver.ladder99.com`)
+      - traefik.http.routers.beav.tls=true
+      - traefik.http.routers.beav.tls.certresolver=lets-encrypt
       - traefik.port=8978
-    networks:
-      - web
-    ports:
-      - 8978/tcp
 
   # note: must set owner of folders with
   # sudo chown -R 0:0 volumes/grafana
@@ -24,14 +19,10 @@ services:
       - all
     labels:
       - traefik.enable=true
-      - traefik.http.routers.wiki.rule=Host(`demo-north.ladder99.com`)
-      - traefik.http.routers.wiki.tls=true
-      - traefik.http.routers.wiki.tls.certresolver=lets-encrypt
+      - traefik.http.routers.graf.rule=Host(`demo-north.ladder99.com`)
+      - traefik.http.routers.graf.tls=true
+      - traefik.http.routers.graf.tls.certresolver=lets-encrypt
       - traefik.port=3000
-    networks:
-      - web
-    ports:
-      - 3000/tcp
 
   postgres:
     profiles:
@@ -51,12 +42,3 @@ services:
   traefik:
     profiles:
       - all
-    networks:
-      - web
-
-# note: need to create the web network manually with
-#   docker network create web
-networks:
-  web:
-    name: web
-    external: true
