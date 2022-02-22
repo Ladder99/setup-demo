@@ -11,12 +11,13 @@ pi.sh
 .venv
 _old
 
+volumes/adapter/cookies
+volumes/cloudbeaver
 volumes/grafana/var
 volumes/mosquitto/data
 volumes/mosquitto/log
 volumes/portainer/data
 volumes/postgres/data
 volumes/nodered
-volumes/adapter/cookies
 volumes/traefik/acme.json
 

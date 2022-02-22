@@ -5,7 +5,7 @@ services:
     profiles:
       - all
     image: dbeaver/cloudbeaver:21.3.5 # use this for x86 etc
-    build: # turn off the Dockerfile build instructions
+    # build: {} # turn off the Dockerfile build instructions
     labels:
       - traefik.enable=true
       - traefik.http.routers.wiki.rule=Host(`demo-north-beaver.ladder99.com`)
