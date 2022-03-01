@@ -34,7 +34,7 @@ services:
     environment:
       AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717
       #. will need to boost this as number of devices increases,
-      # until have automatic rate setting
+      # until have automatic rate setting OR use streaming
       # FETCH_INTERVAL: 2000
       # FETCH_COUNT: 800
 
