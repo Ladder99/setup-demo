@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 5,
-  "iteration": 1645732951416,
+  "iteration": 1646171764447,
   "links": [
     {
       "asDropdown": false,
@@ -92,7 +92,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 4,
         "w": 4.8,
         "x": 0,
         "y": 1
@@ -151,7 +151,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 5
       },
       "id": 29,
       "panels": [],
@@ -228,10 +228,10 @@
       "expandFromQueryS": 0,
       "extendLastValue": true,
       "gridPos": {
-        "h": 8,
+        "h": 10,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 6
       },
       "highlightOnMouseover": true,
       "id": 31,
@@ -288,7 +288,7 @@
           "metricColumn": "none",
           "rawQuery": true,
           "rawSql": "SELECT time, value as \"Controller Mode\"\nFROM get_timeline('$device', 'controller/path/controller_mode', $__from, $__to)\n",
-          "refId": "Co",
+          "refId": "CoM",
           "select": [
             [
               {
@@ -392,7 +392,7 @@
         {
           "format": "table",
           "group": [],
-          "hide": false,
+          "hide": true,
           "metricColumn": "none",
           "rawQuery": true,
           "rawSql": "SELECT time, value as \"Rotary Mode\"\nFROM get_timeline('$device', 'axes/c/rotary_mode', $__from, $__to)\n",
@@ -424,6 +424,141 @@
           "rawQuery": true,
           "rawSql": "SELECT time, value as \"System Condition\"\nFROM get_timeline('$device', 'system_condition', $__from, $__to)\n",
           "refId": "Sys",
+          "select": [
+            [
+              {
+                "params": ["value"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "history_float",
+          "timeColumn": "\"time\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT time, value as \"Functional Mode\"\nFROM get_timeline('$device', 'functional_mode', $__from, $__to)\n",
+          "refId": "Fm",
+          "select": [
+            [
+              {
+                "params": ["value"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "history_float",
+          "timeColumn": "\"time\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": true,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT time, value as \"Equipment Mode / Operating\"\nFROM get_timeline('$device', 'equipment_mode-operating', $__from, $__to)\n",
+          "refId": "EmO",
+          "select": [
+            [
+              {
+                "params": ["value"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "history_float",
+          "timeColumn": "\"time\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT time, value as \"Equipment Mode / Working\"\nFROM get_timeline('$device', 'equipment_mode-working', $__from, $__to)\n",
+          "refId": "EmW",
+          "select": [
+            [
+              {
+                "params": ["value"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "history_float",
+          "timeColumn": "\"time\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT time, value as \"Equipment Mode / Delay\"\nFROM get_timeline('$device', 'equipment_mode-delay', $__from, $__to)\n",
+          "refId": "EmD",
+          "select": [
+            [
+              {
+                "params": ["value"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "history_float",
+          "timeColumn": "\"time\"",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT time, value as \"Equipment Mode / Loaded\"\nFROM get_timeline('$device', 'equipment_mode-loaded', $__from, $__to)\n",
+          "refId": "EmL",
           "select": [
             [
               {
@@ -510,7 +645,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 16
       },
       "id": 39,
       "panels": [],
@@ -530,7 +665,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 36,
@@ -778,7 +913,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 37,
@@ -992,7 +1127,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 24
       },
       "id": 41,
       "panels": [],
@@ -1018,7 +1153,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 8,
@@ -1136,7 +1271,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1355,5 +1490,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 66
+  "version": 71
 }
