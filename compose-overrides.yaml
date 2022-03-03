@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  cloudbeaver:
-    profiles:
-      - all
-    image: dbeaver/cloudbeaver:21.3.5 # use this for x86 etc
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.beav.rule=Host(`demo-north-beaver.ladder99.com`)
-      - traefik.http.routers.beav.tls=true
-      - traefik.http.routers.beav.tls.certresolver=lets-encrypt
-      - traefik.port=8978
+  # cloudbeaver:
+  #   profiles:
+  #     - all
+  #   image: dbeaver/cloudbeaver:21.3.5 # use this for x86 etc
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.http.routers.beav.rule=Host(`demo-north-beaver.ladder99.com`)
+  #     - traefik.http.routers.beav.tls=true
+  #     - traefik.http.routers.beav.tls.certresolver=lets-encrypt
+  #     - traefik.port=8978
 
   # note: must set owner of folders with
   #   sudo chown -R 0:0 ../client-mazak/volumes/grafana
