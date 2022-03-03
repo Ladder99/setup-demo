@@ -4,13 +4,15 @@ Mazak has a set of CNC machines connected to MTConnect Agents - the data for one
 
 ![](assets/dashboard.jpg)
 
-The XML underlying the dashboard is available here - http://mtconnect.mazakcorp.com:5717/current. Others are available also - http://mtconnect.mazakcorp.com.
+The XML underlying the dashboard is available here - http://mtconnect.mazakcorp.com:5717/current.
 
 ## Architecture
 
 ![](assets/architecture.png)
 
-This setup uses a Digital Ocean droplet to host the Ladder99 pipeline (Relay, Postgres, Grafana), SQL access (Hue), and a reverse proxy (Traefik). The Traefik container will be the only one with port 80 and 443 exposed.
+Ladder99 is used to read data from an MTConnect Agent - the data is written to a SQL database (Postgres), which is then read by the dashboard (Grafana).
+
+Ladder99 is a free and open-source pipeline for reading data from devices and MTConnect Agents and transforming it to easily digestible dashboards. For more information see https://github.com/Ladder99/ladder99-ce.
 
 ## Links
 
@@ -22,6 +24,9 @@ https://demo-north-beaver.ladder99.com
 
 Monitor (Traefik)
 https://demo-north-monitor.ladder99.com
+
+More Mazak Agents
+http://mtconnect.mazakcorp.com
 
 ## Setup
 

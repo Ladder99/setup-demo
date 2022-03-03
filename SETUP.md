@@ -1,3 +1,7 @@
+## About
+
+This setup uses a Digital Ocean droplet to host the Ladder99 pipeline (Relay, Postgres, Grafana), SQL access (Hue), and a reverse proxy (Traefik). The Traefik container will be the only one with port 80 and 443 exposed.
+
 ## Diagram source
 
 https://docs.google.com/drawings/d/1bBneF6XSqm4Qls_OiLGLMFbBTbfJwSQ-BV3SmlJ-H90/edit?usp=sharing
