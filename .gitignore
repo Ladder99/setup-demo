@@ -14,6 +14,7 @@ _old
 volumes/adapter/cookies
 volumes/cloudbeaver
 volumes/grafana/var
+volumes/hue
 volumes/mosquitto/data
 volumes/mosquitto/log
 volumes/portainer/data
