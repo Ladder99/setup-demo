@@ -18,8 +18,8 @@
 
 [providers.docker]
   watch = true
-  network = "web"
+  network = "ladder99"
 
 [providers.file]
-  filename = "volumes/traefik/traefik_dynamic.toml"
+  filename = "traefik_dynamic.toml"
 
