@@ -1,4 +1,4 @@
-# Client setup for Mazak demo
+# Ladder99 Demo
 
 Mazak has a set of CNC machines connected to MTConnect Agents - the data for one of the machines can be viewed here - https://demo-north.ladder99.com.
 
