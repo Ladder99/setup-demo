@@ -1,11 +1,9 @@
 client:
   name: Mazak # not used yet
   # tell server what timezone to report results in, what timezone schedules are in etc
-  timezoneOffsetHrs: -6 # hrs from GMT
+  timezoneOffsetHrs: -6 # hrs from GMT - currently used by jobboss driver and availability.js
 
+#. relay doesn't need this, but bombs without it - remove that part
 devices:
-  # --------------------------------------------------------------------
-  # micro
-  # --------------------------------------------------------------------
   - id: d1 # must match id in agent.xml
     name: M12346 # must match name in agent.cfg and agent.xml
