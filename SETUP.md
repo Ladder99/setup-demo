@@ -23,6 +23,7 @@ Clone this repo and ladder99-ce there
     git clone https://github.com/Ladder99/ladder99-ce
     git clone https://github.com/Ladder99/client-mazak
     cd ladder99-ce
+    git checkout develop
 
 Start all Docker services (Grafana, Hue, Postgres, Relay, Traefik) -
 
