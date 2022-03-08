@@ -21,6 +21,12 @@ services:
   grafana:
     profiles:
       - all
+    # IMPORTANT: might need to turn this on for a client - have to comment it
+    # out here because a client might need no ports exposed.
+    #. can you do that by setting grafana_port to nothing?
+    # see cloudbeaver comments.
+    ports:
+      - $GRAFANA_PORT:3000/tcp
     labels:
       - traefik.enable=true
       - traefik.http.routers.graf.rule=Host(`demo-north.ladder99.com`)
