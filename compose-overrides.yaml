@@ -51,7 +51,7 @@ services:
       # or a .txt file with a url per line.
       # NO TRAILING SLASHES
       #. make this an array? but this is an envar so must be a string
-      AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://bunker.mriiot.com:5000
+      AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.206:5000
       #. will need to boost this as number of devices increases,
       # until have automatic rate setting OR use streaming
       # FETCH_INTERVAL: 2000
