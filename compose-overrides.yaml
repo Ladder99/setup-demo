@@ -47,7 +47,10 @@ services:
     profiles:
       - all
     environment:
-      AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717
+      # this can be an agent url, a comma-separated (no spaces) list of urls,
+      # or a .txt file with a url per line.
+      #. make this an array? but this is an envar so must be a string
+      AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://bunker.mriiot.com:5000/
       #. will need to boost this as number of devices increases,
       # until have automatic rate setting OR use streaming
       # FETCH_INTERVAL: 2000
