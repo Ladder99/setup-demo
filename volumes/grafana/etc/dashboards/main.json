@@ -22,9 +22,9 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "gnetId": null,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "id": 5,
-  "iteration": 1646291145190,
+  "iteration": 1648053372321,
   "links": [
     {
       "asDropdown": false,
@@ -1490,5 +1490,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 72
+  "version": 2
 }
