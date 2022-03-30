@@ -53,7 +53,8 @@ services:
       #. make this an array? but this is an envar so must be a string
       # second one is also visible at http://bunker.mriiot.com:5000/
       # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.206:5000
-      AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.145:5000
+      # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.145:5000
+      AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717
       #. will need to boost this as number of devices increases,
       # until have automatic rate setting OR use streaming
       # FETCH_INTERVAL: 2000
