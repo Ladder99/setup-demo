@@ -45,10 +45,22 @@ services:
   # hue:
   #   profiles:
   #     - all
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.http.routers.hue.rule=Host(`demo-north-beaver.ladder99.com`)
+  #     - traefik.http.routers.hue.tls=true
+  #     - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+  #     - traefik.port=8888
 
   pgadmin:
     profiles:
       - all
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.hue.rule=Host(`demo-north-beaver.ladder99.com`)
+      - traefik.http.routers.hue.tls=true
+      - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+      - traefik.port=8888
 
   postgres:
     profiles:
