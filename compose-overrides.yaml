@@ -42,9 +42,9 @@ services:
       - traefik.http.routers.graf.tls.certresolver=lets-encrypt
       - traefik.port=3000
 
-  hue:
-    profiles:
-      - all
+  # hue:
+  #   profiles:
+  #     - all
 
   postgres:
     profiles:
