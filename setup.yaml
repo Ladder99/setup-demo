@@ -1,12 +1,23 @@
 client:
-  name: Mazak # not used yet
+  name: Demo # not used yet
   # tell server what timezone to report results in, what timezone schedules are in etc
   timezoneOffsetHrs: -6 # hrs from GMT - currently used by jobboss driver and availability.js
 
 #. relay doesn't need this, but bombs without it - fix
 devices:
-  - id: d1 # must match id in agent.xml
-    name: M12346 # must match name in agent.cfg and agent.xml
+  # --------------------------------------------------------------------
+  # micro
+  # --------------------------------------------------------------------
+  - id: m # must match id in agent.xml
+    name: Micro # must match name in agent.cfg and agent.xml
+    sources:
+      - module: micro # defines inputs and outputs with yaml files
+        driver: micro # adapter plugin - manages protocol and payload
+    # where to post output - just uses first output for now
+    destinations:
+      - protocol: shdr
+        host: adapter
+        port: 7890 # must match agent.cfg value
 
 paths: # list of regexp path translations - canonicalize paths
   ^base\/: axes/
