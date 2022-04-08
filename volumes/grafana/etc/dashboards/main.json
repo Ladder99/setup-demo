@@ -24,13 +24,13 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 5,
-  "iteration": 1648053372321,
+  "iteration": 1649425632895,
   "links": [
     {
       "asDropdown": false,
       "icon": "external link",
-      "includeVars": true,
-      "keepTime": true,
+      "includeVars": false,
+      "keepTime": false,
       "tags": ["client"],
       "targetBlank": false,
       "title": "",
@@ -1490,5 +1490,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 2
+  "version": 5
 }
