@@ -46,6 +46,10 @@ services:
   #   profiles:
   #     - all
 
+  pgadmin:
+    profiles:
+      - all
+
   postgres:
     profiles:
       - all
