@@ -6,6 +6,7 @@
 
     <!-- Micro -->
     <Device id="m" name="Micro" uuid="36BC34E9-CFFE-43B0-97D6-14FAA7519C8E" sampleInterval="5">
+      <Description>Microcontroller</Description>
       <DataItems>
         <DataItem id="m-avail" name="availability" category="EVENT" type="AVAILABILITY" />
         <DataItem id="m-cond" name="condition" category="CONDITION" type="SYSTEM" />
