@@ -20,4 +20,4 @@ devices:
         port: 7890 # must match agent.cfg value
 
 paths: # list of regexp path translations - canonicalize paths
-  base\/: axes/
+  ^base$: axes
