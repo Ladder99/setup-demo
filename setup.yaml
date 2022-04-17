@@ -19,5 +19,5 @@ devices:
         host: adapter
         port: 7890 # must match agent.cfg value
 
-paths: # list of regexp path translations - canonicalize paths
+paths: # list of regexp path step translations - canonicalize paths
   ^base$: axes
