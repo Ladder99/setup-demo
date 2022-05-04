@@ -13,8 +13,8 @@ providers:
       path: /etc/dashboards
       # foldersFromFilesStructure: true
 
-  - name: Mazak
-    folder: Mazak
+  - name: Demo
+    folder: Demo
     type: file
     allowUiUpdates: true
     options:
