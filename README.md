@@ -19,7 +19,7 @@ Ladder99 is a free and open-source pipeline for reading data from devices and MT
 Dashboard (Grafana)
 https://demo-north.ladder99.com
 
-SQL access (Hue)
+SQL access (pgAdmin)
 https://demo-north-beaver.ladder99.com
 
 Monitor (Traefik)
