@@ -1,6 +1,6 @@
 ## About
 
-This setup uses a Raspberry Pi to host the Ladder99 pipeline (Relay, Postgres, Grafana), SQL access (pgadmin), and a reverse proxy (Traefik). The Traefik container will be the only one with port 80 and 443 exposed (?).
+This setup uses a Digital Ocean droplet to host the Ladder99 pipeline (Relay, Postgres, Grafana), SQL access (Hue), and a reverse proxy (Traefik). The Traefik container will be the only one with port 80 and 443 exposed.
 
 ## Diagram source
 
@@ -8,9 +8,10 @@ https://docs.google.com/drawings/d/1bBneF6XSqm4Qls_OiLGLMFbBTbfJwSQ-BV3SmlJ-H90/
 
 ## Setup
 
-Login to the pi console here - https://teleport.ladder99.com/web/cluster/teleport.ladder99.com/console/node/d66da91e-e6f9-4599-84b5-3de313a2cd10/root
+Login to the Droplet console here -
+https://cloud.digitalocean.com/droplets/285467341/access
 
-Login as root then drop down to mriiot with `su - mriiot`.
+Login as root then drop down to user with `su - user`.
 
 Make a directory ladder99
 
@@ -20,13 +21,13 @@ Make a directory ladder99
 Clone this repo and ladder99-ce there
 
     git clone https://github.com/Ladder99/ladder99-ce
-    git clone https://github.com/Ladder99/client-demo
+    git clone https://github.com/Ladder99/client-mazak
     cd ladder99-ce
     git checkout develop
 
-Start all Docker services (Grafana, Postgres, Relay, pgadmin, Traefik) -
+Start all Docker services (Grafana, Hue, Postgres, Relay, Traefik) -
 
-    ./start demo all
+    ./start mazak all
 
 - you'll be asked to edit an .env file - be sure to set the Postgres password, 
 and add the MTConnect Agents you want to query - e.g. 
@@ -80,16 +81,21 @@ eg
 To update code when github repos are updated
 
     cd ~/ladder99/ladder99-ce
-    ./update demo
+    ./update mazak
 
-this will update both ladder99-ce and client-demo repos.
+this will update both ladder99-ce and client-mazak repos.
 
 If you need to update the running Grafana dashboard,
 
     docker stop grafana
-    ./start demo grafana
+    ./start mazak grafana
 
 To restart the Relay service,
 
     docker stop relay
-    ./start demo relay
+    ./start mazak relay
+
+## Source
+
+This setup is based on
+https://www.digitalocean.com/community/tutorials/how-to-use-traefik-v2-as-a-reverse-proxy-for-docker-containers-on-ubuntu-20-04
