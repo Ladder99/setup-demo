@@ -23,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 5,
-  "iteration": 1651564176982,
+  "id": 6,
+  "iteration": 1652171562430,
   "links": [
     {
       "asDropdown": false,
@@ -93,7 +93,7 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4.8,
+        "w": 24,
         "x": 0,
         "y": 1
       },
@@ -220,6 +220,11 @@
           "$$hashKey": "object:791",
           "color": "rgb(77, 77, 77)",
           "text": "READY"
+        },
+        {
+          "$$hashKey": "object:432",
+          "color": "#00000000",
+          "text": "N/A"
         }
       ],
       "crosshairColor": "#8F070C",
@@ -241,7 +246,7 @@
       "pluginVersion": "7.5.5",
       "rangeMaps": [
         {
-          "$$hashKey": "object:21408",
+          "$$hashKey": "object:893",
           "from": "null",
           "text": "N/A",
           "to": "null"
@@ -627,7 +632,7 @@
       "useTimePrecision": false,
       "valueMaps": [
         {
-          "$$hashKey": "object:21406",
+          "$$hashKey": "object:891",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -1407,9 +1412,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "M12346",
-          "value": "M12346"
+          "isNone": true,
+          "selected": true,
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "select name from devices",
@@ -1434,21 +1440,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": [
-            "axes/b/load",
-            "axes/c/load",
-            "axes/x/load",
-            "axes/y/load",
-            "axes/z/load"
-          ],
-          "value": [
-            "axes/b/load",
-            "axes/c/load",
-            "axes/x/load",
-            "axes/y/load",
-            "axes/z/load"
-          ]
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "SELECT props->>'path'\nFROM nodes\nwhere\n\tprops->>'category' = 'SAMPLE'\n\tand props->>'type' = 'LOAD'\n",
@@ -1490,5 +1485,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 7
+  "version": 2
 }
