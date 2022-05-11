@@ -19,10 +19,10 @@ devices:
         host: adapter
         port: 7890 # must match agent.cfg value
 
-# paths: # list of regexp path step translations - canonicalize paths
-#   ^base$: axes
+paths: # list of regexp path step translations - canonicalize paths
+  ^base$: axes
 
-# path step translations
+# path step translations - for relay branch
 translations:
   5fd88408-7811-3c6b-5400-11f4026b6890#a: axes
   5fd88408-7811-3c6b-5400-11f4026b6890#Cload: load-index
