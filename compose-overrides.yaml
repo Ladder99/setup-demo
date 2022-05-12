@@ -6,6 +6,8 @@ services:
       - all
 
   agent:
+    # trying out agent2.0
+    image: ladder99/agent2:latest
     profiles:
       - all
 
