@@ -8,6 +8,7 @@ services:
   agent:
     # trying out agent2.0
     image: ladder99/agent2:latest
+    # command: agent debug agent.cfg
     profiles:
       - all
 
