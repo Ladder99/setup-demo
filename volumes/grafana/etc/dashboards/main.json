@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 6,
-  "iteration": 1652171562430,
+  "iteration": 1652697506520,
   "links": [
     {
       "asDropdown": false,
@@ -92,8 +92,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
-        "w": 24,
+        "h": 5,
+        "w": 4,
         "x": 0,
         "y": 1
       },
@@ -103,7 +103,7 @@
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": ["last"],
-          "fields": "/^c$/",
+          "fields": "/^value$/",
           "values": false
         },
         "showThresholdLabels": false,
@@ -119,7 +119,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as c\nFROM history_float\nWHERE\n  device='$device'\n  and path in ($sample_load)\n  --and $__timeFilter(\"time\")\norder by time desc\nlimit 1",
+          "rawSql": "SELECT time, value\nFROM history_float\nWHERE\n  device='$device'\n  and path in ($sample_load)\n  and $__timeFilter(\"time\")\norder by time desc\nlimit 1",
           "refId": "loads repeater",
           "select": [
             [
@@ -151,7 +151,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 29,
       "panels": [],
@@ -236,7 +236,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 7
       },
       "highlightOnMouseover": true,
       "id": 31,
@@ -650,7 +650,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "id": 39,
       "panels": [],
@@ -670,7 +670,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 36,
@@ -918,7 +918,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 37,
@@ -1132,7 +1132,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 25
       },
       "id": 41,
       "panels": [],
@@ -1158,7 +1158,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 8,
@@ -1276,7 +1276,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1412,10 +1412,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
-          "selected": true,
-          "text": "None",
-          "value": ""
+          "selected": false,
+          "text": "M12346",
+          "value": "M12346"
         },
         "datasource": null,
         "definition": "select name from devices",
@@ -1440,22 +1439,35 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": [
+            "axes/b/load",
+            "axes/c/load[cload]",
+            "axes/c/load[sload]",
+            "axes/x/load",
+            "axes/y/load",
+            "axes/z/load"
+          ],
+          "value": [
+            "axes/b/load",
+            "axes/c/load[cload]",
+            "axes/c/load[sload]",
+            "axes/x/load",
+            "axes/y/load",
+            "axes/z/load"
+          ]
         },
         "datasource": null,
-        "definition": "SELECT props->>'path'\nFROM nodes\nwhere\n\tprops->>'category' = 'SAMPLE'\n\tand props->>'type' = 'LOAD'\n",
+        "definition": "select path from dataitems where category='SAMPLE' and type='LOAD'",
         "description": "sample_load",
         "error": null,
         "hide": 2,
-        "includeAll": false,
+        "includeAll": true,
         "label": "sample_load",
         "multi": true,
         "name": "sample_load",
         "options": [],
-        "query": "SELECT props->>'path'\nFROM nodes\nwhere\n\tprops->>'category' = 'SAMPLE'\n\tand props->>'type' = 'LOAD'\n",
+        "query": "select path from dataitems where category='SAMPLE' and type='LOAD'",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1485,5 +1497,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 2
+  "version": 12
 }
