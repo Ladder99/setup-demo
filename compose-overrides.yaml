@@ -8,10 +8,15 @@ services:
   agent:
     # try out agent2.0
     image: ladder99/agent2:latest
-    # image: ladder99/agent2:amd
     # command: agent debug agent.cfg
     profiles:
       - all
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.hue.rule=Host(`demo-north-agent.ladder99.com`)
+      - traefik.http.routers.hue.tls=true
+      - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+      - traefik.port=5000
 
   # cloudbeaver:
   #   profiles:

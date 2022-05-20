@@ -93,3 +93,15 @@ To restart the Relay service,
 
     docker stop relay
     ./start demo relay
+
+# Traefik
+
+Traefik is a reverse proxy that exposes services to the internet. See the compose-overrides.yaml for things like this - 
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.hue.rule=Host(`demo-north-beaver.ladder99.com`)
+      - traefik.http.routers.hue.tls=true
+      - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+      - traefik.port=8888
+
