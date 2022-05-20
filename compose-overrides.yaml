@@ -11,6 +11,8 @@ services:
     # command: agent debug agent.cfg
     profiles:
       - all
+    ports:
+      - '5000:5000'
     labels:
       - traefik.enable=true
       - traefik.http.routers.hue.rule=Host(`demo-north-agent.ladder99.com`)
@@ -103,4 +105,4 @@ services:
 
   traefik:
     profiles:
-      - prod
+      - all
