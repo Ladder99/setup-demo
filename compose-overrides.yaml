@@ -6,8 +6,9 @@ services:
       - all
 
   agent:
-    # trying out agent2.0
+    # try out agent2.0
     image: ladder99/agent2:latest
+    # image: ladder99/agent2:amd
     # command: agent debug agent.cfg
     profiles:
       - all
