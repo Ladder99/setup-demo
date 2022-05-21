@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 7,
-  "iteration": 1645179035190,
+  "id": 13,
+  "iteration": 1653144473165,
   "links": [
     {
       "asDropdown": false,
@@ -56,7 +56,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 12,
         "x": 0,
         "y": 0
@@ -93,7 +93,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as x\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/x/position-commanded' and\n  $__timeFilter(\"time\");",
+          "rawSql": "SELECT\n  time,\n  value as x\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/x/position-actual-machine' and\n  $__timeFilter(\"time\");",
           "refId": "A",
           "select": [
             [
@@ -120,7 +120,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as y\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/y/position-commanded' and\n  $__timeFilter(\"time\");",
+          "rawSql": "SELECT\n  time,\n  value as y\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/y/position-actual-machine' and\n  $__timeFilter(\"time\");",
           "refId": "B",
           "select": [
             [
@@ -147,7 +147,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as z\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/z/position-commanded' and\n  $__timeFilter(\"time\");\n",
+          "rawSql": "SELECT\n  time,\n  value as z\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/z/position-actual-machine' and\n  $__timeFilter(\"time\");\n",
           "refId": "C",
           "select": [
             [
@@ -173,7 +173,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Commanded Position (mm)",
+      "title": "Position (mm)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -213,184 +213,12 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "unit": "lengthmm"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "hiddenSeries": false,
-      "id": 4,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as x\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/x/position-actual' and\n  $__timeFilter(\"time\");",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "\"values\"",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamptz",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as y\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/y/position-actual' and\n  $__timeFilter(\"time\");",
-          "refId": "B",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "\"values\"",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamptz",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as z\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/z/position-actual' and\n  $__timeFilter(\"time\");\n",
-          "refId": "C",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "\"values\"",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamptz",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Actual Position (mm)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:2856",
-          "format": "lengthmm",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:2857",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
       "datasource": null,
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 6,
         "x": 0,
-        "y": 6
+        "y": 5
       },
       "id": 6,
       "options": {
@@ -464,7 +292,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time,\n  SUM(CASE path WHEN 'axes/x/position-actual' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual' THEN value ELSE 0 END) AS y\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY time\n;\n",
+          "rawSql": "SELECT time,\n  SUM(CASE path WHEN 'axes/x/position-actual-machine' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual-machine' THEN value ELSE 0 END) AS y\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY time\n;\n",
           "refId": "A",
           "select": [
             [
@@ -494,10 +322,10 @@
     {
       "datasource": null,
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 7,
+        "w": 6,
         "x": 6,
-        "y": 6
+        "y": 5
       },
       "id": 8,
       "pconfig": {
@@ -589,7 +417,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time,\n  SUM(CASE path WHEN 'axes/x/position-actual' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual' THEN value ELSE 0 END) AS y,\n  SUM(CASE path WHEN 'axes/z/position-actual' THEN value ELSE 0 END) AS z\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY time\n;\n",
+          "rawSql": "SELECT time,\n  SUM(CASE path WHEN 'axes/x/position-actual-machine' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual-machine' THEN value ELSE 0 END) AS y,\n  SUM(CASE path WHEN 'axes/z/position-actual-machine' THEN value ELSE 0 END) AS z\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY time\n;\n",
           "refId": "A",
           "select": [
             [
@@ -654,5 +482,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 15
+  "version": 2
 }
