@@ -1,7 +1,8 @@
 client:
   name: Demo # not used yet
   # tell server what timezone to report results in, what timezone schedules are in etc
-  timezoneOffsetHrs: -6 # hrs from GMT - currently used by jobboss driver and availability.js
+  timezone: America/Chicago # currently just used by jobboss driver and availability js
+  # timezoneOffsetHrs: -6 # hrs from GMT - currently used by jobboss driver and availability.js
 
 #. relay doesn't need this, but bombs without it - fix
 devices:
