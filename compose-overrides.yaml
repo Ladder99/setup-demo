@@ -15,9 +15,9 @@ services:
       - '5000:5000'
     labels:
       - traefik.enable=true
-      - traefik.http.routers.hue.rule=Host(`demo-north-agent.ladder99.com`)
-      - traefik.http.routers.hue.tls=true
-      - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+      - traefik.http.routers.agent.rule=Host(`demo-north-agent.ladder99.com`)
+      - traefik.http.routers.agent.tls=true
+      - traefik.http.routers.agent.tls.certresolver=lets-encrypt
       - traefik.port=5000
 
   # cloudbeaver:
@@ -26,9 +26,9 @@ services:
   #   image: dbeaver/cloudbeaver:21.3.5 # use this for x86 etc
   #   labels:
   #     - traefik.enable=true
-  #     - traefik.http.routers.beav.rule=Host(`demo-north-beaver.ladder99.com`)
-  #     - traefik.http.routers.beav.tls=true
-  #     - traefik.http.routers.beav.tls.certresolver=lets-encrypt
+  #     - traefik.http.routers.cloudbeaver.rule=Host(`demo-north-beaver.ladder99.com`)
+  #     - traefik.http.routers.cloudbeaver.tls=true
+  #     - traefik.http.routers.cloudbeaver.tls.certresolver=lets-encrypt
   #     - traefik.port=8978
 
   dozzle:
@@ -48,9 +48,9 @@ services:
       - '$GRAFANA_PORT:3000/tcp'
     labels:
       - traefik.enable=true
-      - traefik.http.routers.graf.rule=Host(`demo-north.ladder99.com`)
-      - traefik.http.routers.graf.tls=true
-      - traefik.http.routers.graf.tls.certresolver=lets-encrypt
+      - traefik.http.routers.grafana.rule=Host(`demo-north.ladder99.com`)
+      - traefik.http.routers.grafana.tls=true
+      - traefik.http.routers.grafana.tls.certresolver=lets-encrypt
       - traefik.port=3000
 
   # hue:
@@ -70,9 +70,9 @@ services:
     dns: 8.8.8.8
     labels:
       - traefik.enable=true
-      - traefik.http.routers.hue.rule=Host(`demo-north-beaver.ladder99.com`)
-      - traefik.http.routers.hue.tls=true
-      - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+      - traefik.http.routers.pgadmin.rule=Host(`demo-north-beaver.ladder99.com`)
+      - traefik.http.routers.pgadmin.tls=true
+      - traefik.http.routers.pgadmin.tls.certresolver=lets-encrypt
       - traefik.port=8888
 
   postgres:
