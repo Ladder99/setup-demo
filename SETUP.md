@@ -100,8 +100,10 @@ Traefik is a reverse proxy that exposes services to the internet. See the compos
 
     labels:
       - traefik.enable=true
-      - traefik.http.routers.hue.rule=Host(`demo-north-beaver.ladder99.com`)
-      - traefik.http.routers.hue.tls=true
-      - traefik.http.routers.hue.tls.certresolver=lets-encrypt
+      - traefik.http.routers.agent.rule=Host(`demo-north-agent.ladder99.com`)
+      - traefik.http.routers.agent.tls=true
+      - traefik.http.routers.agent.tls.certresolver=lets-encrypt
       - traefik.port=8888
+
+Note the '.agent.' in the keys - it just needs to be something unique for each service exposed.
 
