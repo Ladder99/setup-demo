@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 13,
-  "iteration": 1653144473165,
+  "id": 7,
+  "iteration": 1653424438953,
   "links": [
     {
       "asDropdown": false,
@@ -93,7 +93,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as x\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/x/position-actual-machine' and\n  $__timeFilter(\"time\");",
+          "rawSql": "SELECT\n  time,\n  value as x\nFROM history_float\nWHERE \n  device='$device' and\n  -- path='axes/x/position-actual-machine' and\n  path in ('axes/x/position-actual','axes/x/position-actual-machine') and\n  $__timeFilter(\"time\");",
           "refId": "A",
           "select": [
             [
@@ -120,7 +120,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as y\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/y/position-actual-machine' and\n  $__timeFilter(\"time\");",
+          "rawSql": "SELECT\n  time,\n  value as y\nFROM history_float\nWHERE \n  device='$device' and\n  --path='axes/y/position-actual-machine' and\n  path in ('axes/y/position-actual','axes/y/position-actual-machine') and\n  $__timeFilter(\"time\");",
           "refId": "B",
           "select": [
             [
@@ -147,7 +147,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as z\nFROM history_float\nWHERE \n  device='$device' and\n  path='axes/z/position-actual-machine' and\n  $__timeFilter(\"time\");\n",
+          "rawSql": "SELECT\n  time,\n  value as z\nFROM history_float\nWHERE \n  device='$device' and\n  --path='axes/z/position-actual-machine' and\n  path in ('axes/z/position-actual','axes/z/position-actual-machine') and\n  $__timeFilter(\"time\");\n",
           "refId": "C",
           "select": [
             [
@@ -452,8 +452,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "M12346",
-          "value": "M12346"
+          "text": "FBR-67E500-01",
+          "value": "FBR-67E500-01"
         },
         "datasource": null,
         "definition": "select name from devices",
@@ -482,5 +482,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 2
+  "version": 4
 }
