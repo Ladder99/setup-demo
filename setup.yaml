@@ -21,7 +21,22 @@ devices:
         port: 7890 # must match agent.cfg value
 
 paths: # list of regexp path step translations - canonicalize paths
-  ^base$: axes
+  #. better to just do plain string replacements?
+  # silex replacements
+  axes/x1: axes/x
+  axes/y1: axes/y
+  axes/z1: axes/z
+  axes/c1: axes/c
+  load\[n\.load-x_p1\]: load
+  load\[n\.load-y_p1\]: load
+  load\[n\.load-z_p1\]: load
+  load\[n\.loadcurrentpercent-x_p1\]: load[pct]
+  load\[n\.loadcurrentpercent-y_p1\]: load[pct]
+  load\[n\.loadcurrentpercent-z_p1\]: load[pct]
+  interface_state\[n\.dryrun-1\]: interface_state[dryrun]
+  interface_state\[n\.feedrate-1\]: interface_state[feedrate]
+  interface_state\[n\.m00-1\]: interface_state[m00]
+  interface_state\[n\.m01-1\]: interface_state[m01]
 
 # path step translations - for relay branch
 translations:
