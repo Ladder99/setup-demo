@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 6,
-  "iteration": 1652697506520,
+  "iteration": 1653423386342,
   "links": [
     {
       "asDropdown": false,
@@ -93,7 +93,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
+        "w": 6,
         "x": 0,
         "y": 1
       },
@@ -1413,8 +1413,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "M12346",
-          "value": "M12346"
+          "text": "FBR-67E500-01",
+          "value": "FBR-67E500-01"
         },
         "datasource": null,
         "definition": "select name from devices",
@@ -1440,22 +1440,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": [
-            "axes/b/load",
-            "axes/c/load[cload]",
-            "axes/c/load[sload]",
-            "axes/x/load",
-            "axes/y/load",
-            "axes/z/load"
-          ],
-          "value": [
-            "axes/b/load",
-            "axes/c/load[cload]",
-            "axes/c/load[sload]",
-            "axes/x/load",
-            "axes/y/load",
-            "axes/z/load"
-          ]
+          "text": ["axes/c/load", "axes/x/load", "axes/y/load", "axes/z/load"],
+          "value": ["axes/c/load", "axes/x/load", "axes/y/load", "axes/z/load"]
         },
         "datasource": null,
         "definition": "select path from dataitems where category='SAMPLE' and type='LOAD'",
@@ -1497,5 +1483,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 12
+  "version": 15
 }
