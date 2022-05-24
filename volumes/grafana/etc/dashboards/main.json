@@ -23,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 6,
-  "iteration": 1653423386342,
+  "id": 12,
+  "iteration": 1653425428526,
   "links": [
     {
       "asDropdown": false,
@@ -145,7 +145,7 @@
       "type": "gauge"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -154,494 +154,495 @@
         "y": 6
       },
       "id": 29,
-      "panels": [],
+      "panels": [
+        {
+          "backgroundColor": "rgba(155, 155, 155, .1)",
+          "colorMaps": [
+            {
+              "$$hashKey": "object:21403",
+              "color": "#CCC",
+              "text": "N/A"
+            },
+            {
+              "$$hashKey": "object:110845",
+              "color": "#73BF69",
+              "text": "AVAILABLE"
+            },
+            {
+              "$$hashKey": "object:110846",
+              "color": "rgb(77, 77, 77)",
+              "text": "SPINDLE"
+            },
+            {
+              "$$hashKey": "object:110847",
+              "color": "rgb(220, 42, 64)",
+              "text": "TRIGGERED"
+            },
+            {
+              "$$hashKey": "object:110848",
+              "color": "#73BF69",
+              "text": "ARMED"
+            },
+            {
+              "$$hashKey": "object:110849",
+              "color": "#73BF69",
+              "text": "ON"
+            },
+            {
+              "$$hashKey": "object:110850",
+              "color": "rgb(0, 0, 0)",
+              "text": "OFF"
+            },
+            {
+              "$$hashKey": "object:483",
+              "color": "black",
+              "text": "UNAVAILABLE"
+            },
+            {
+              "$$hashKey": "object:210",
+              "color": "rgb(77, 77, 77)",
+              "text": "AUTOMATIC"
+            },
+            {
+              "$$hashKey": "object:789",
+              "color": "rgb(0, 0, 0)",
+              "text": "STOPPED"
+            },
+            {
+              "$$hashKey": "object:790",
+              "color": "#73BF69",
+              "text": "ACTIVE"
+            },
+            {
+              "$$hashKey": "object:791",
+              "color": "rgb(77, 77, 77)",
+              "text": "READY"
+            },
+            {
+              "$$hashKey": "object:432",
+              "color": "#00000000",
+              "text": "N/A"
+            }
+          ],
+          "crosshairColor": "#8F070C",
+          "datasource": null,
+          "display": "timeline",
+          "expandFromQueryS": 0,
+          "extendLastValue": true,
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 7
+          },
+          "highlightOnMouseover": true,
+          "id": 31,
+          "legendSortBy": "-ms",
+          "lineColor": "black",
+          "metricNameColor": "#ffffff",
+          "pluginVersion": "7.5.5",
+          "rangeMaps": [
+            {
+              "$$hashKey": "object:893",
+              "from": "null",
+              "text": "N/A",
+              "to": "null"
+            }
+          ],
+          "rowHeight": 40,
+          "showDistinctCount": false,
+          "showLegend": false,
+          "showLegendNames": true,
+          "showLegendPercent": true,
+          "showLegendValues": true,
+          "showTimeAxis": true,
+          "targets": [
+            {
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Availability\"\nFROM get_timeline('$device', 'availability', $__from, $__to)\n",
+              "refId": "Av",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Controller Mode\"\nFROM get_timeline('$device', 'controller/path/controller_mode', $__from, $__to)\n",
+              "refId": "CoM",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": true,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Electric Power\"\nFROM get_timeline('$device', 'systems/electric/power_state', $__from, $__to)\n",
+              "refId": "El",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Emergency Stop\"\nFROM get_timeline('$device', 'controller/emergency_stop', $__from, $__to)\n",
+              "refId": "Em",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', 'controller/path/execution', $__from, $__to)\n",
+              "refId": "Ex",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": true,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Rotary Mode\"\nFROM get_timeline('$device', 'axes/c/rotary_mode', $__from, $__to)\n",
+              "refId": "Ro",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": true,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"System Condition\"\nFROM get_timeline('$device', 'system_condition', $__from, $__to)\n",
+              "refId": "Sys",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": true,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Functional Mode\"\nFROM get_timeline('$device', 'functional_mode', $__from, $__to)\n",
+              "refId": "Fm",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": true,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Equipment Mode / Operating\"\nFROM get_timeline('$device', 'equipment_mode-operating', $__from, $__to)\n",
+              "refId": "EmO",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Equipment Mode / Working\"\nFROM get_timeline('$device', 'equipment_mode-working', $__from, $__to)\n",
+              "refId": "EmW",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Equipment Mode / Delay\"\nFROM get_timeline('$device', 'equipment_mode-delay', $__from, $__to)\n",
+              "refId": "EmD",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            },
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT time, value as \"Equipment Mode / Loaded\"\nFROM get_timeline('$device', 'equipment_mode-loaded', $__from, $__to)\n",
+              "refId": "EmL",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "history_float",
+              "timeColumn": "\"time\"",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "textSize": 20,
+          "textSizeTime": 12,
+          "timeOptions": [
+            {
+              "name": "Years",
+              "value": "years"
+            },
+            {
+              "name": "Months",
+              "value": "months"
+            },
+            {
+              "name": "Weeks",
+              "value": "weeks"
+            },
+            {
+              "name": "Days",
+              "value": "days"
+            },
+            {
+              "name": "Hours",
+              "value": "hours"
+            },
+            {
+              "name": "Minutes",
+              "value": "minutes"
+            },
+            {
+              "name": "Seconds",
+              "value": "seconds"
+            },
+            {
+              "name": "Milliseconds",
+              "value": "milliseconds"
+            }
+          ],
+          "timePrecision": {
+            "name": "Minutes",
+            "value": "minutes"
+          },
+          "timeTextColor": "rgb(146, 146, 146)",
+          "title": "Timeline",
+          "type": "natel-discrete-panel",
+          "units": "short",
+          "use12HourClock": false,
+          "useTimePrecision": false,
+          "valueMaps": [
+            {
+              "$$hashKey": "object:891",
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueTextColor": "#ffffff",
+          "writeAllValues": false,
+          "writeLastValue": true,
+          "writeMetricNames": true
+        }
+      ],
       "title": "Timeline",
       "type": "row"
-    },
-    {
-      "backgroundColor": "rgba(155, 155, 155, .1)",
-      "colorMaps": [
-        {
-          "$$hashKey": "object:21403",
-          "color": "#CCC",
-          "text": "N/A"
-        },
-        {
-          "$$hashKey": "object:110845",
-          "color": "#73BF69",
-          "text": "AVAILABLE"
-        },
-        {
-          "$$hashKey": "object:110846",
-          "color": "rgb(77, 77, 77)",
-          "text": "SPINDLE"
-        },
-        {
-          "$$hashKey": "object:110847",
-          "color": "rgb(220, 42, 64)",
-          "text": "TRIGGERED"
-        },
-        {
-          "$$hashKey": "object:110848",
-          "color": "#73BF69",
-          "text": "ARMED"
-        },
-        {
-          "$$hashKey": "object:110849",
-          "color": "#73BF69",
-          "text": "ON"
-        },
-        {
-          "$$hashKey": "object:110850",
-          "color": "rgb(0, 0, 0)",
-          "text": "OFF"
-        },
-        {
-          "$$hashKey": "object:483",
-          "color": "black",
-          "text": "UNAVAILABLE"
-        },
-        {
-          "$$hashKey": "object:210",
-          "color": "rgb(77, 77, 77)",
-          "text": "AUTOMATIC"
-        },
-        {
-          "$$hashKey": "object:789",
-          "color": "rgb(0, 0, 0)",
-          "text": "STOPPED"
-        },
-        {
-          "$$hashKey": "object:790",
-          "color": "#73BF69",
-          "text": "ACTIVE"
-        },
-        {
-          "$$hashKey": "object:791",
-          "color": "rgb(77, 77, 77)",
-          "text": "READY"
-        },
-        {
-          "$$hashKey": "object:432",
-          "color": "#00000000",
-          "text": "N/A"
-        }
-      ],
-      "crosshairColor": "#8F070C",
-      "datasource": null,
-      "display": "timeline",
-      "expandFromQueryS": 0,
-      "extendLastValue": true,
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 7
-      },
-      "highlightOnMouseover": true,
-      "id": 31,
-      "legendSortBy": "-ms",
-      "lineColor": "black",
-      "metricNameColor": "#ffffff",
-      "pluginVersion": "7.5.5",
-      "rangeMaps": [
-        {
-          "$$hashKey": "object:893",
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "rowHeight": 40,
-      "showDistinctCount": false,
-      "showLegend": false,
-      "showLegendNames": true,
-      "showLegendPercent": true,
-      "showLegendValues": true,
-      "showTimeAxis": true,
-      "targets": [
-        {
-          "format": "table",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Availability\"\nFROM get_timeline('$device', 'availability', $__from, $__to)\n",
-          "refId": "Av",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Controller Mode\"\nFROM get_timeline('$device', 'controller/path/controller_mode', $__from, $__to)\n",
-          "refId": "CoM",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": true,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Electric Power\"\nFROM get_timeline('$device', 'systems/electric/power_state', $__from, $__to)\n",
-          "refId": "El",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Emergency Stop\"\nFROM get_timeline('$device', 'controller/emergency_stop', $__from, $__to)\n",
-          "refId": "Em",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', 'controller/path/execution', $__from, $__to)\n",
-          "refId": "Ex",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": true,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Rotary Mode\"\nFROM get_timeline('$device', 'axes/c/rotary_mode', $__from, $__to)\n",
-          "refId": "Ro",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": true,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"System Condition\"\nFROM get_timeline('$device', 'system_condition', $__from, $__to)\n",
-          "refId": "Sys",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": true,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Functional Mode\"\nFROM get_timeline('$device', 'functional_mode', $__from, $__to)\n",
-          "refId": "Fm",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": true,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Operating\"\nFROM get_timeline('$device', 'equipment_mode-operating', $__from, $__to)\n",
-          "refId": "EmO",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Working\"\nFROM get_timeline('$device', 'equipment_mode-working', $__from, $__to)\n",
-          "refId": "EmW",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Delay\"\nFROM get_timeline('$device', 'equipment_mode-delay', $__from, $__to)\n",
-          "refId": "EmD",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "table",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Loaded\"\nFROM get_timeline('$device', 'equipment_mode-loaded', $__from, $__to)\n",
-          "refId": "EmL",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "textSize": 20,
-      "textSizeTime": 12,
-      "timeOptions": [
-        {
-          "name": "Years",
-          "value": "years"
-        },
-        {
-          "name": "Months",
-          "value": "months"
-        },
-        {
-          "name": "Weeks",
-          "value": "weeks"
-        },
-        {
-          "name": "Days",
-          "value": "days"
-        },
-        {
-          "name": "Hours",
-          "value": "hours"
-        },
-        {
-          "name": "Minutes",
-          "value": "minutes"
-        },
-        {
-          "name": "Seconds",
-          "value": "seconds"
-        },
-        {
-          "name": "Milliseconds",
-          "value": "milliseconds"
-        }
-      ],
-      "timePrecision": {
-        "name": "Minutes",
-        "value": "minutes"
-      },
-      "timeTextColor": "rgb(146, 146, 146)",
-      "title": "Timeline",
-      "type": "natel-discrete-panel",
-      "units": "short",
-      "use12HourClock": false,
-      "useTimePrecision": false,
-      "valueMaps": [
-        {
-          "$$hashKey": "object:891",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueTextColor": "#ffffff",
-      "writeAllValues": false,
-      "writeLastValue": true,
-      "writeMetricNames": true
     },
     {
       "collapsed": false,
@@ -650,7 +651,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 7
       },
       "id": 39,
       "panels": [],
@@ -670,7 +671,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 36,
@@ -918,7 +919,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 37,
@@ -1132,7 +1133,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 15
       },
       "id": 41,
       "panels": [],
@@ -1158,7 +1159,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 16
       },
       "hiddenSeries": false,
       "id": 8,
@@ -1276,7 +1277,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 16
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1337,7 +1338,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as Override\nFROM history_float\nWHERE\n  -- path='axes/c/spindle-speed-override' and\n  path='controller/path/rotary_velocity_override' and\n  $__timeFilter(\"time\")",
+          "rawSql": "SELECT time, value as Override\nFROM history_float\nWHERE\n  device='$device' and\n  -- path='axes/c/spindle-speed-override' and\n  path='controller/path/rotary_velocity_override' and\n  $__timeFilter(\"time\")",
           "refId": "B",
           "select": [
             [
@@ -1483,5 +1484,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 15
+  "version": 4
 }
