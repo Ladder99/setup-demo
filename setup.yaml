@@ -22,6 +22,8 @@ devices:
 
 paths: # list of regexp path step translations - canonicalize paths
   #. better to just do plain string replacements?
+  # mazak replacements
+  base: axes
   # silex replacements
   axes/x1: axes/x
   axes/y1: axes/y
