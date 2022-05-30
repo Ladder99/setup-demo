@@ -8,7 +8,6 @@ services:
   agent:
     # try out agent2.0
     image: ladder99/agent2:latest
-    # command: agent debug agent.cfg
     profiles:
       - all
     ports:
@@ -40,10 +39,7 @@ services:
   grafana:
     profiles:
       - all
-    # IMPORTANT: might need to turn this on for a client - have to comment it
-    # out here because a client might need no ports exposed.
-    #. can you do that by setting grafana_port to nothing?
-    # we need this turned off, since traefik is gonna use port 80
+    #. can you set grafana_port to nothing?
     ports:
       - '$GRAFANA_PORT:3000/tcp'
     labels:
@@ -105,4 +101,4 @@ services:
 
   traefik:
     profiles:
-      - all
+      - prod
