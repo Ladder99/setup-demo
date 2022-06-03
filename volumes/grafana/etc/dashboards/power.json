@@ -483,7 +483,44 @@
           },
           "unit": "watt"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "path"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 323
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 186
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "average"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 177
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 7,
@@ -493,7 +530,8 @@
       },
       "id": 26,
       "options": {
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
       "pluginVersion": "8.2.2",
       "targets": [
@@ -502,7 +540,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time_bucket_gapfill('5 minutes', time) tt, path,\n    interpolate(avg(value)) vavg\n    --sum(value) vsum, \n    --locf(sum(value)) vlocf, \n    --interpolate(sum(value)) vinterpolate\n  FROM history_float\n  WHERE\n    device='$device'\n    and path like 'axes/%/wattage-actual'\n    and $__timeFilter(\"time\")\n  group by tt, path\n  order by 1\n",
+          "rawSql": "SELECT time_bucket_gapfill('5 minutes', time) _time, path,\n    interpolate(avg(value)) average\n    --sum(value) vsum, \n    --locf(sum(value)) vlocf, \n    --interpolate(sum(value)) vinterpolate\n  FROM history_float\n  WHERE\n    device='$device'\n    and path like 'axes/%/wattage-actual'\n    and $__timeFilter(\"time\")\n  group by _time, path\n  order by 1\n",
           "refId": "watt repeater",
           "select": [
             [
@@ -524,7 +562,7 @@
           ]
         }
       ],
-      "title": "ttt",
+      "title": "Average Wattage",
       "type": "table"
     },
     {
@@ -917,12 +955,12 @@
     ]
   },
   "time": {
-    "from": "2022-03-08T16:34:20.591Z",
-    "to": "2022-03-08T20:24:57.505Z"
+    "from": "2022-03-08T17:29:36.175Z",
+    "to": "2022-03-08T18:21:08.703Z"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Power Consumption",
   "uid": "power2",
-  "version": 9
+  "version": 11
 }
