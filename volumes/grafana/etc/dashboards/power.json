@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 14,
-  "iteration": 1654270266129,
+  "id": 11,
+  "iteration": 1654270718831,
   "links": [
     {
       "asDropdown": false,
@@ -434,7 +434,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT ss.tt as time, sum(ss.vavg) svavg from\n(\n  SELECT time_bucket_gapfill('5 minutes', time) as tt, \n    interpolate(avg(value)) vavg\n    --sum(value) vsum, \n    --locf(sum(value)) vlocf, \n    --interpolate(sum(value)) vinterpolate\n  FROM history_float\n  WHERE\n    device='$device'\n    and path like 'axes/%/wattage-actual'\n    and $__timeFilter(\"time\")\n  group by tt, path\n) ss\ngroup by time\norder by 1",
+          "rawSql": "SELECT ss.tt as time, sum(ss.vavg) svavg from\n(\n  SELECT time_bucket_gapfill('5 minutes', time) as tt, \n    interpolate(avg(value)) vavg\n    --sum(value) vsum, \n    --locf(sum(value)) vlocf, \n    --interpolate(sum(value)) vinterpolate\n  FROM history_float\n  WHERE\n    device='$device'\n    and path like 'axes/%/wattage-actual'\n    and $__timeFilter(\"time\")\n  group by tt, path\n) ss\ngroup by time\norder by 1\n\n-- select time, value from history_float\n-- where path='axes/f13_50_p1_s1/wattage-actual'\n-- and $__timeFilter(\"time\")\n",
           "refId": "watt repeater",
           "select": [
             [
@@ -886,9 +886,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "f13_50",
-          "value": "f13_50"
+          "selected": true,
+          "text": "f13_100",
+          "value": "f13_100"
         },
         "description": null,
         "error": null,
@@ -899,12 +899,12 @@
         "name": "device",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "f13_50",
             "value": "f13_50"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "f13_100",
             "value": "f13_100"
           }
@@ -917,12 +917,12 @@
     ]
   },
   "time": {
-    "from": "2022-05-11T05:00:00.000Z",
-    "to": "2022-05-12T04:59:59.000Z"
+    "from": "2022-03-08T16:34:20.591Z",
+    "to": "2022-03-08T20:24:57.505Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Power Consumption Copy",
+  "title": "Power Consumption",
   "uid": "power2",
-  "version": 8
+  "version": 9
 }
