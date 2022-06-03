@@ -7,7 +7,7 @@ services:
 
   agent:
     # try out agent2.0
-    image: ladder99/agent2:latest
+    # image: ladder99/agent2:latest
     profiles:
       - all
     ports:
