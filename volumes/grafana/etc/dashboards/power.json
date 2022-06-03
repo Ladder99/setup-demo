@@ -22,8 +22,21 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 7,
-  "links": [],
+  "id": 11,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": ["client"],
+      "targetBlank": false,
+      "title": "New link",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "liveNow": false,
   "panels": [
     {
@@ -1644,5 +1657,5 @@
   "timezone": "",
   "title": "Power Consumption",
   "uid": "power",
-  "version": 85
+  "version": 3
 }
