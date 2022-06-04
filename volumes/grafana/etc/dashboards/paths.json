@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 7,
-  "iteration": 1653424438953,
+  "id": 13,
+  "iteration": 1654380255717,
   "links": [
     {
       "asDropdown": false,
@@ -56,7 +56,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 5,
+        "h": 12,
         "w": 12,
         "x": 0,
         "y": 0
@@ -217,8 +217,8 @@
       "gridPos": {
         "h": 7,
         "w": 6,
-        "x": 0,
-        "y": 5
+        "x": 12,
+        "y": 0
       },
       "id": 6,
       "options": {
@@ -230,11 +230,13 @@
         "fieldSets": [
           {
             "col": 2,
-            "color": "#e04c7b",
+            "color": "#5794F2",
             "dotSize": 2,
             "hidden": false,
             "lineSize": 1,
-            "lineType": "none"
+            "lineType": "none",
+            "polynomialOrder": 2,
+            "sizeCol": -1
           }
         ],
         "grid": {
@@ -290,9 +292,10 @@
         {
           "format": "table",
           "group": [],
+          "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time,\n  SUM(CASE path WHEN 'axes/x/position-actual-machine' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual-machine' THEN value ELSE 0 END) AS y\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY time\n;\n",
+          "rawSql": "SELECT date_trunc('sec', time) as _time,\n  avg(CASE path WHEN 'axes/x/position-actual' THEN value ELSE 0 END) AS x,\n  avg(CASE path WHEN 'axes/y/position-actual' THEN value ELSE 0 END) AS y\nFROM history_float\nWHERE\n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY _time\n;\n",
           "refId": "A",
           "select": [
             [
@@ -324,8 +327,8 @@
       "gridPos": {
         "h": 7,
         "w": 6,
-        "x": 6,
-        "y": 5
+        "x": 18,
+        "y": 0
       },
       "id": 8,
       "pconfig": {
@@ -371,16 +374,16 @@
         "traces": [
           {
             "mapping": {
-              "color": "time",
+              "color": "tt",
               "size": null,
               "text": null,
               "x": "x",
               "y": "y",
               "z": "z"
             },
-            "name": "Trace 1",
+            "name": "tt",
             "settings": {
-              "color_option": "ramp",
+              "color_option": "solid",
               "line": {
                 "color": "#005f81",
                 "dash": "solid",
@@ -388,14 +391,14 @@
                 "width": 6
               },
               "marker": {
-                "color": "#33B5E5",
+                "color": "#5794F2",
                 "colorscale": "Earth",
                 "line": {
                   "color": "#DDD",
                   "width": 0
                 },
                 "showscale": false,
-                "size": 3,
+                "size": 1,
                 "sizemin": 3,
                 "sizemode": "diameter",
                 "sizeref": 0.2,
@@ -417,7 +420,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time,\n  SUM(CASE path WHEN 'axes/x/position-actual-machine' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual-machine' THEN value ELSE 0 END) AS y,\n  SUM(CASE path WHEN 'axes/z/position-actual-machine' THEN value ELSE 0 END) AS z\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY time\n;\n",
+          "rawSql": "SELECT date_trunc('sec', time) as tt,\n  SUM(CASE path WHEN 'axes/x/position-actual' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual' THEN value ELSE 0 END) AS y,\n  SUM(CASE path WHEN 'axes/z/position-actual' THEN value ELSE 0 END) AS z\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY tt\n;\n",
           "refId": "A",
           "select": [
             [
@@ -452,8 +455,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "FBR-67E500-01",
-          "value": "FBR-67E500-01"
+          "text": "GFAgie01",
+          "value": "GFAgie01"
         },
         "datasource": null,
         "definition": "select name from devices",
@@ -475,12 +478,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 4
+  "version": 7
 }
