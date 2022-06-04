@@ -223,7 +223,7 @@
       "id": 6,
       "options": {
         "border": {
-          "color": "yellow",
+          "color": "#949494",
           "size": 1,
           "show": false
         },
@@ -240,7 +240,7 @@
           }
         ],
         "grid": {
-          "color": "gray"
+          "color": "#3c3c3c"
         },
         "label": {
           "col": -1,
@@ -485,5 +485,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 7
+  "version": 8
 }
