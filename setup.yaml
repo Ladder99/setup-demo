@@ -5,6 +5,7 @@ client:
 
 agents:
   - http://agent:5000 # microcontroller
+  # - http://mtconnect.mazakcorp.com:5701 # mazak
   - http://mtconnect.mazakcorp.com:5717 # mazak
   - https://smstestbed.nist.gov/vds # nist - agie, mazak, hurco
   - http://10.1.10.187:5000 # silex fbr (?)
