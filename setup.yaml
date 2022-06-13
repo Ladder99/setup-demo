@@ -3,6 +3,13 @@ client:
   # tell server what timezone to report results in, what timezone schedules are in etc
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
+agents:
+  - http://agent:5000 # microcontroller
+  - http://mtconnect.mazakcorp.com:5717 # mazak
+  - https://smstestbed.nist.gov/vds # nist - agie, mazak, hurco
+  - http://10.1.10.187:5000 # silex fbr (?)
+  - http://10.1.10.145:5000 # fanucs ?
+
 # specify aliases for devices we want to track
 devices:
   - alias: Microcontroller # displayed in dashboard
@@ -17,51 +24,52 @@ devices:
         host: adapter
         port: 7890 # must match agent.cfg value
 
-  - alias: Mazak Mill
-    uuid: 5fd88408-7811-3c6b-5400-11f4026b6890
+  # - alias: Mazak Mill
+  #   uuid: 5fd88408-7811-3c6b-5400-11f4026b6890
 
-  - alias: Microcontroller
-    uuid: 36BC34E9-CFFE-43B0-97D6-14FAA7519C8E
+  # - alias: Microcontroller
+  #   uuid: 36BC34E9-CFFE-43B0-97D6-14FAA7519C8E
 
-  - alias: Agie Micron
-    id: GFAgie01
-    model: HPM600U # why add this? in case you hook in another agent with same device id
+  # - alias: Agie Micron
+  #   id: GFAgie01
+  #   model: HPM600U # why add this? in case you hook in another agent with same device id
 
-  - alias: Mazak Integrix
-    id: Mazak01
-    model: Integrex
+  # - alias: Mazak Integrix
+  #   id: Mazak01
+  #   model: Integrex
 
-  - alias: Mazak QuickTurn
-    id: Mazak03
-    model: QTN
+  # - alias: Mazak QuickTurn
+  #   id: Mazak03
+  #   model: QTN
 
-  - alias: Hurco VMX24-1
-    id: Hurco01
-    uuid: mtc_adapter005
-    model: VMX24
+  # - alias: Hurco VMX24-1
+  #   id: Hurco01
+  #   uuid: mtc_adapter005
+  #   model: VMX24
 
-  - alias: Hurco VMX24-2
-    id: Hurco02
-    uuid: mtc_adapter006
-    model: VMX24
+  # - alias: Hurco VMX24-2
+  #   id: Hurco02
+  #   uuid: mtc_adapter006
+  #   model: VMX24
 
-  - alias: Hurco VMX24-3
-    id: Hurco03
-    uuid: mtc_adapter007
-    model: VMX24
+  # - alias: Hurco VMX24-3
+  #   id: Hurco03
+  #   uuid: mtc_adapter007
+  #   model: VMX24
 
-  - alias: Hurco VMX24-4
-    id: Hurco04
-    uuid: mtc_adapter008
-    model: VMX24
+  # - alias: Hurco VMX24-4
+  #   id: Hurco04
+  #   uuid: mtc_adapter008
+  #   model: VMX24
 
-  - alias: Hurco VMX64
-    id: Hurco06
-    uuid: mtc_adapter010
-    model: VMX64
+  # - alias: Hurco VMX64
+  #   id: Hurco06
+  #   uuid: mtc_adapter010
+  #   model: VMX64
 
 paths: # list of regexp path step translations - canonicalize paths
   #. better to just do plain string replacements?
+  #. better to keep these with each device, above
   # mazak
   base: axes
   # silex
@@ -83,6 +91,7 @@ paths: # list of regexp path step translations - canonicalize paths
 
 # path step translations - for future relay branch
 translations:
+  # mazak mill
   5fd88408-7811-3c6b-5400-11f4026b6890#a: axes
   5fd88408-7811-3c6b-5400-11f4026b6890#Cload: load-index
   5fd88408-7811-3c6b-5400-11f4026b6890#Sload: load-spindle
