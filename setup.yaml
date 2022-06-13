@@ -4,7 +4,6 @@ client:
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
 # specify agents we want to get data from
-#. no slash at end, for now!
 agents:
   - http://agent:5000 # microcontroller
   # - http://mtconnect.mazakcorp.com:5717 # mazak
