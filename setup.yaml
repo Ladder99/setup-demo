@@ -8,8 +8,8 @@ agents:
   # - http://mtconnect.mazakcorp.com:5701 # mazak
   - http://mtconnect.mazakcorp.com:5717 # mazak
   - https://smstestbed.nist.gov/vds # nist - agie, mazak, hurco
-  - http://10.1.10.187:5000 # silex fbr (?)
-  - http://10.1.10.145:5000 # fanucs ?
+  - http://10.1.10.187:5000 # silex fbr
+  - http://10.1.10.145:5000 # fanucs
 
 # specify aliases for devices we want to track
 devices:
@@ -67,6 +67,10 @@ devices:
   #   id: Hurco06
   #   uuid: mtc_adapter010
   #   model: VMX64
+
+  # - alias: Silex
+  #   id: FBR-100AN
+  #   name: FBR-67E500-01
 
 paths: # list of regexp path step translations - canonicalize paths
   #. better to just do plain string replacements?
