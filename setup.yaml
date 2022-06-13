@@ -3,12 +3,10 @@ client:
   # tell server what timezone to report results in, what timezone schedules are in etc
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
-#. relay doesn't need this, but bombs without it - fix
+# specify aliases for devices we want to track
 devices:
-  # --------------------------------------------------------------------
-  # micro
-  # --------------------------------------------------------------------
-  - id: m # must match id in agent.xml
+  - alias: Microcontroller # displayed in dashboard
+    id: m # must match id in agent.xml
     name: Micro # must match name in agent.cfg and agent.xml
     sources:
       - module: micro # defines inputs and outputs with yaml files
@@ -18,6 +16,49 @@ devices:
       - protocol: shdr
         host: adapter
         port: 7890 # must match agent.cfg value
+
+  - alias: Mazak Mill
+    uuid: 5fd88408-7811-3c6b-5400-11f4026b6890
+
+  - alias: Microcontroller
+    uuid: 36BC34E9-CFFE-43B0-97D6-14FAA7519C8E
+
+  - alias: Agie Micron
+    id: GFAgie01
+    model: HPM600U # why add this? in case you hook in another agent with same device id
+
+  - alias: Mazak Integrix
+    id: Mazak01
+    model: Integrex
+
+  - alias: Mazak QuickTurn
+    id: Mazak03
+    model: QTN
+
+  - alias: Hurco VMX24-1
+    id: Hurco01
+    uuid: mtc_adapter005
+    model: VMX24
+
+  - alias: Hurco VMX24-2
+    id: Hurco02
+    uuid: mtc_adapter006
+    model: VMX24
+
+  - alias: Hurco VMX24-3
+    id: Hurco03
+    uuid: mtc_adapter007
+    model: VMX24
+
+  - alias: Hurco VMX24-4
+    id: Hurco04
+    uuid: mtc_adapter008
+    model: VMX24
+
+  - alias: Hurco VMX64
+    id: Hurco06
+    uuid: mtc_adapter010
+    model: VMX64
 
 paths: # list of regexp path step translations - canonicalize paths
   #. better to just do plain string replacements?
