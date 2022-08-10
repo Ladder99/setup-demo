@@ -1,76 +1,77 @@
+# client setup
+# read by the ladder99 adapter and relay.
+
 client:
   name: Demo # not used yet
   # tell server what timezone to report results in, what timezone schedules are in etc
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
-# specify agents we want to get data from
+# specify agents we want to get data from.
+# don't change the keys/aliases as db uses them to synch data!
 agents:
-  - http://agent:5000 # microcontroller
-  # - http://mtconnect.mazakcorp.com:5717 # mazak
-  # - https://smstestbed.nist.gov/vds # nist - agie, mazak, hurco
-  # - http://10.1.10.145:5000 # fanucs
-  # - http://10.1.10.187:5000 # silex fbr
+  micro:
+    url: http://agent:5000
+    retention: 2d # clear all unneeded data at midnight? then vacuum analyze db?
+    # without a list of devices here, relay will read all available in agent
 
-# specify aliases for devices we want to track
+  mazak:
+    url: http://mtconnect.mazakcorp.com:5717
+    devices:
+      - alias: Mazak Mill
+        uuid: 5fd88408-7811-3c6b-5400-11f4026b6890
+
+  nist:
+    url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
+    devices:
+      - id: GFAgie01
+        alias: Agie Micron
+
+        id: Mazak01
+      - alias: Mazak Integrix
+
+        id: Mazak03
+      - alias: Mazak QuickTurn
+
+        id: Hurco01
+      - alias: Hurco VMX24-1
+
+        id: Hurco02
+      - alias: Hurco VMX24-2
+
+        id: Hurco03
+      - alias: Hurco VMX24-3
+
+        id: Hurco04
+      - alias: Hurco VMX24-4
+
+        id: Hurco06
+      - alias: Hurco VMX64
+        # off: true # turn this off/on to hide/show device in dashboards, record/pause
+
+  silex:
+    url: http://10.1.10.187:5000
+    devices:
+        id: FBR-100AN
+      - alias: Silex FBR
+
+  fanuc:
+    url: http://10.1.10.145:5000
+    # record all devices
+
 devices:
-  - alias: Microcontroller # displayed in dashboard #. for relay branch
-    id: m # must match id in agent.xml
+  - id: m # must match id in agent.xml
     name: Micro # must match name in agent.cfg and agent.xml
     sources:
       - module: micro # defines inputs and outputs with yaml files
         driver: micro # adapter plugin - manages protocol and payload
-    # where to post output - just uses first output for now
+    # connection for agent to connect to. then relay reads from that agent.
     destinations:
       - protocol: shdr
-        host: adapter
+        host: adapter # must match agent.cfg value
         port: 7890 # must match agent.cfg value
 
-  # - alias: Mazak Mill
-  #   uuid: 5fd88408-7811-3c6b-5400-11f4026b6890
-
-  # - alias: Agie Micron
-  #   id: GFAgie01
-  #   model: HPM600U # why add this? in case you hook in another agent with same device id
-
-  # - alias: Mazak Integrix
-  #   id: Mazak01
-  #   model: Integrex
-
-  # - alias: Mazak QuickTurn
-  #   id: Mazak03
-  #   model: QTN
-
-  # - alias: Hurco VMX24-1
-  #   id: Hurco01
-  #   uuid: mtc_adapter005
-  #   model: VMX24
-
-  # - alias: Hurco VMX24-2
-  #   id: Hurco02
-  #   uuid: mtc_adapter006
-  #   model: VMX24
-
-  # - alias: Hurco VMX24-3
-  #   id: Hurco03
-  #   uuid: mtc_adapter007
-  #   model: VMX24
-
-  # - alias: Hurco VMX24-4
-  #   id: Hurco04
-  #   uuid: mtc_adapter008
-  #   model: VMX24
-
-  # - alias: Hurco VMX64
-  #   id: Hurco06
-  #   uuid: mtc_adapter010
-  #   model: VMX64
-
-  # - alias: Silex FBR
-  #   id: FBR-100AN
-  #   name: FBR-67E500-01
-
 paths: # list of regexp path step translations - canonicalize paths
-  #. better to just do plain string replacements?
+  #. better to just do plain string replacements? yeahhhh
   #. better to keep these with each device, above
   # mazak
   base: axes
