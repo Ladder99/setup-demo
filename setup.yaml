@@ -43,6 +43,9 @@ relay:
       devices:
         M12345:
           alias: Mazak Mill 12345
+          extra:
+            department: Mazak
+            order: 0
 
     mazak5717:
       url: http://mtconnect.mazakcorp.com:5717
@@ -50,6 +53,9 @@ relay:
         M12346:
           alias: Mazak Mill 12346 # for display in grafana etc
           # off: true # set true to hide device in dashboards, pause recording, etc
+          extra:
+            department: Mazak
+            order:
           # dataitem step translations
           translations:
             a: axes
@@ -61,12 +67,18 @@ relay:
       devices:
         HCN001:
           alias: Mazak Mill HCN001
+          extra:
+            department: Mazak
+            order: 2
 
     nist:
       url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
       devices:
         GFAgie01:
           alias: Agie Micron
+          extra:
+            department: NIST
+            order: 0
 
         Mazak01:
           alias: Mazak Integrix
