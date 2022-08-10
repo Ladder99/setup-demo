@@ -6,6 +6,8 @@ client:
   # tell server what timezone to report results in, what timezone schedules are in etc
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
+# adapter reads this section to setup devices with their drivers,
+# which publish data to an agent via SHDR over TCP.
 adapter:
   devices:
     - id: m # must match id in agent.xml
@@ -19,8 +21,8 @@ adapter:
           host: adapter # must match agent.cfg value
           port: 7890 # must match agent.cfg value
 
-# specify agents for relay to get data from.
-# warning: don't change the agent keys (eg micro) as used to synch data with db.
+# relay reads this section to know what agents to read data from.
+# warning: don't change the agent keys (eg micro) as they are used to synch data with db.
 relay:
   # retention: 1wk # could specify a top-level retention for all agents here
   agents:
