@@ -24,7 +24,7 @@ adapter:
 relay:
   # retention: 1wk # could specify a top-level retention for all agents here
   agents:
-    micro: # this is an arbitrary key we assign to each agent
+    micro: # this is an arbitrary key we assign to each agent, used by the db
       url: http://agent:5000 # url to the agent
       retention: 2d # could clear all unneeded data at midnight - then vacuum analyze db?
       # without a list of devices here, relay would read all available in agent
@@ -36,17 +36,29 @@ relay:
             m-os:
               retention: 1d
 
-    mazak:
+    mazak5701:
+      url: http://mtconnect.mazakcorp.com:5701
+      devices:
+        M12345:
+          alias: Mazak Mill 12345
+
+    mazak5717:
       url: http://mtconnect.mazakcorp.com:5717
       devices:
         M12346:
-          alias: Mazak Mill # for display in grafana etc
+          alias: Mazak Mill 12346 # for display in grafana etc
           # off: true # set true to hide device in dashboards, pause recording, etc
           #? dataitem step translations - like this?
-          dataitems:
+          translations:
             a: axes
             Cload: load-index
             Sload: load-spindle
+
+    mazak5719:
+      url: http://mtconnect.mazakcorp.com:5719
+      devices:
+        HCN001:
+          alias: Mazak Mill HCN001
 
     nist:
       url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
