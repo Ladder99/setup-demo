@@ -48,7 +48,7 @@ relay:
         M12346:
           alias: Mazak Mill 12346 # for display in grafana etc
           # off: true # set true to hide device in dashboards, pause recording, etc
-          #? dataitem step translations - like this?
+          # dataitem step translations
           translations:
             a: axes
             Cload: load-index
@@ -92,7 +92,7 @@ relay:
       devices:
         FBR-100AN:
           alias: Silex FBR
-          #. could specify path step translations per agent, or higher up, or any level?
+          # could specify path step translations per agent, or higher up, or any level
           translations:
             x1: x
             y1: y
@@ -111,4 +111,4 @@ relay:
 
     fanuc:
       url: http://10.1.10.145:5000
-      # just record all devices and dataitems
+      # just record all devices and dataitems in this agent
