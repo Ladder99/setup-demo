@@ -1,74 +1,84 @@
 # client setup
-# read by the ladder99 adapter and relay.
+# read by the ladder99 adapter and relay services.
 
 client:
   name: Demo # not used yet
   # tell server what timezone to report results in, what timezone schedules are in etc
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
-# specify agents we want to get data from.
-# don't change the keys/aliases as db uses them to synch data!
-agents:
-  micro:
-    url: http://agent:5000
-    retention: 2d # clear all unneeded data at midnight? then vacuum analyze db?
-    # without a list of devices here, relay will read all available in agent
+adapter:
+  devices:
+    - id: m # must match id in agent.xml
+      name: Micro # must match name in agent.cfg and agent.xml
+      sources:
+        - module: micro # defines inputs and outputs with yaml files
+          driver: micro # adapter plugin - manages protocol and payload
+      # connection for agent to connect to. then relay reads from that agent.
+      destinations:
+        - protocol: shdr
+          host: adapter # must match agent.cfg value
+          port: 7890 # must match agent.cfg value
 
-  mazak:
-    url: http://mtconnect.mazakcorp.com:5717
-    devices:
-      - alias: Mazak Mill
-        uuid: 5fd88408-7811-3c6b-5400-11f4026b6890
+# specify agents we want relay to get data from.
+# warning: don't change the agent keys (eg micro) as used to synch data with db.
+relay:
+  agents:
+    micro:
+      url: http://agent:5000
+      retention: 2d # eg could clear all unneeded data at midnight - then vacuum analyze db?
+      # without a list of devices here, relay would read all available in agent
+      devices:
+        m:
+          alias: Microcontroller # as displayed in grafana - can change
+          # can override settings per dataitem -
+          dataitems:
+            m-os:
+              retention: 1d
 
-  nist:
-    url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
-    devices:
-      - id: GFAgie01
-        alias: Agie Micron
+    mazak:
+      url: http://mtconnect.mazakcorp.com:5717
+      devices:
+        M...?:
+          alias: Mazak Mill # for display in grafana etc
+          # off: true # set true to hide device in dashboards, pause recording, etc
+          # etc
 
-        id: Mazak01
-      - alias: Mazak Integrix
+    nist:
+      url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
+      devices:
+        GFAgie01:
+          alias: Agie Micron
 
-        id: Mazak03
-      - alias: Mazak QuickTurn
+        Mazak01:
+          alias: Mazak Integrix
 
-        id: Hurco01
-      - alias: Hurco VMX24-1
+        Mazak03:
+          alias: Mazak QuickTurn
 
-        id: Hurco02
-      - alias: Hurco VMX24-2
+        Hurco01:
+          alias: Hurco VMX24-1
 
-        id: Hurco03
-      - alias: Hurco VMX24-3
+        Hurco02:
+          alias: Hurco VMX24-2
 
-        id: Hurco04
-      - alias: Hurco VMX24-4
+        Hurco03:
+          alias: Hurco VMX24-3
 
-        id: Hurco06
-      - alias: Hurco VMX64
-        # off: true # turn this off/on to hide/show device in dashboards, record/pause
+        Hurco04:
+          alias: Hurco VMX24-4
 
-  silex:
-    url: http://10.1.10.187:5000
-    devices:
-        id: FBR-100AN
-      - alias: Silex FBR
+        Hurco06:
+          alias: Hurco VMX64
 
-  fanuc:
-    url: http://10.1.10.145:5000
-    # record all devices
+    silex:
+      url: http://10.1.10.187:5000
+      devices:
+        FBR-100AN:
+          alias: Silex FBR
 
-devices:
-  - id: m # must match id in agent.xml
-    name: Micro # must match name in agent.cfg and agent.xml
-    sources:
-      - module: micro # defines inputs and outputs with yaml files
-        driver: micro # adapter plugin - manages protocol and payload
-    # connection for agent to connect to. then relay reads from that agent.
-    destinations:
-      - protocol: shdr
-        host: adapter # must match agent.cfg value
-        port: 7890 # must match agent.cfg value
+    fanuc:
+      url: http://10.1.10.145:5000
+      # just record all devices and dataitems
 
 paths: # list of regexp path step translations - canonicalize paths
   #. better to just do plain string replacements? yeahhhh
