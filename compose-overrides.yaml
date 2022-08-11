@@ -84,10 +84,7 @@ services:
     environment:
       # this can be an agent url, a comma-separated (no spaces) list of urls,
       # or a .txt file with a url per line.
-      # NO TRAILING SLASHES
-      #. make this an array? but this is an envar so must be a string
-      #. or could you set this as a yaml array and it would convert to json string?
-      #. set this in setup.yaml instead
+      # set this in setup.yaml instead
       # second one is also visible at http://bunker.mriiot.com:5000
       # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.206:5000
       # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.145:5000
