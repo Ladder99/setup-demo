@@ -17,10 +17,9 @@ adapter:
         - module: micro # defines inputs and outputs with yaml files
           driver: micro # adapter plugin - manages protocol and payload
       # connection for agent. then relay reads from that agent.
-      destinations:
-        - protocol: shdr
-          host: adapter # must match agent.cfg value
-          port: 7890 # must match agent.cfg value
+      connection:
+        host: adapter # must match agent.cfg value
+        port: 7890 # must match agent.cfg value
 
 # relay reads this section to know what agents to read data from.
 # warning: don't change the agent keys (eg micro) as they are used to synch data with db.
