@@ -27,76 +27,75 @@ adapter:
 relay:
   # retention: 1wk # could specify a top-level retention for all agents here
   agents:
-    micro: # this is an arbitrary key we assign to each agent, used by the db
+    - id: micro # this is an arbitrary id we assign to each agent, used by the db - don't change!
       url: http://agent:5000 # url to the agent
-      retention: 2d # could clear all unneeded data at midnight - then vacuum analyze db?
+      # ignore: true # can specify this to turn agent recording on/off
+      # retention: 2d # could clear all unneeded data at midnight - then vacuum analyze db?
       # without a list of devices here, relay would read all available in agent
       devices:
-        m:
+        - id: m
           alias: Microcontroller # as displayed in grafana - can change. without this, just use device name?
+          # ignore: true # can specify this to turn device recording on/off
           # could override settings per dataitem -
-          dataitems:
-            m-os:
-              retention: 1d
+          # dataitems:
+          #   - id: m-os
+          #     retention: 1d
 
-    mazak5701:
+    - id: mazak5701 # don't change!
       url: http://mtconnect.mazakcorp.com:5701
       devices:
-        M12345:
+        - id: M12345
           alias: Mazak Mill 12345
 
-    mazak5717:
+    - id: mazak5717 # don't change!
       url: http://mtconnect.mazakcorp.com:5717
       devices:
-        M12346:
+        - id: M12346
           alias: Mazak Mill 12346 # for display in grafana etc
-          # off: true # set true to hide device in dashboards, pause recording, etc
+          # ignore: true # set true to hide device in dashboards, pause recording, etc
           # dataitem step translations
           translations:
             a: axes
             Cload: load-index
             Sload: load-spindle
 
-    mazak5719:
+    - id: mazak5719 # don't change!
       url: http://mtconnect.mazakcorp.com:5719
       devices:
-        HCN001:
+        - id: HCN001
           alias: Mazak Mill HCN001
 
-    nist:
+    - id: nist # don't change!
       url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
       devices:
-        GFAgie01:
+        - id: GFAgie01
           alias: Agie Micron
-          extra:
-            department: NIST
-            order: 0
 
-        Mazak01:
+        - id: Mazak01
           alias: Mazak Integrix
 
-        Mazak03:
+        - id: Mazak03
           alias: Mazak QuickTurn
 
-        Hurco01:
+        - id: Hurco01
           alias: Hurco VMX24-1
 
-        Hurco02:
+        - id: Hurco02
           alias: Hurco VMX24-2
 
-        Hurco03:
+        - id: Hurco03
           alias: Hurco VMX24-3
 
-        Hurco04:
+        - id: Hurco04
           alias: Hurco VMX24-4
 
-        Hurco06:
+        - id: Hurco06
           alias: Hurco VMX64
 
-    silex:
+    - id: silex # don't change!
       url: http://10.1.10.187:5000
       devices:
-        FBR-100AN:
+        - id: FBR-100AN
           alias: Silex FBR
           # could specify path step translations per agent, or higher up, or any level
           translations:
@@ -115,6 +114,7 @@ relay:
             interface_state[n.m00-1]: interface_state[m00]
             interface_state[n.m01-1]: interface_state[m01]
 
-    fanuc:
+    - id: fanuc # don't change
       url: http://10.1.10.145:5000
+      ignore: true # don't record this agent yet
       # just record all devices and dataitems in this agent
