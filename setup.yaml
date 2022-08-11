@@ -7,7 +7,8 @@ client:
   timezone: America/Chicago # currently just used by jobboss driver and availability js
 
 # adapter reads this section to setup devices with their drivers,
-# which publish data to an agent via SHDR over TCP.
+# which publish data to the agent via SHDR over TCP.
+# the agent is a service that communicates over the tcp channel specified in agent.cfg.
 adapter:
   devices:
     - id: m # must match id in agent.xml
