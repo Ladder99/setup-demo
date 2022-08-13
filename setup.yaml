@@ -43,25 +43,25 @@ relay:
     - alias: mazak5701 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5701
       devices:
-        - id: M12345
+        - id: d1
           alias: Mazak Mill 12345
 
     - alias: mazak5717 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5717
       devices:
-        - id: M12346
+        - id: d1
           alias: Mazak Mill 12346 # for display in grafana etc
           # ignore: true # set true to hide device in dashboards, pause recording, etc
           # dataitem step translations
           translations:
-            a: axes
+            base: axes
             Cload: load-index
             Sload: load-spindle
 
     - alias: mazak5719 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5719
       devices:
-        - id: HCN001
+        - id: d1
           alias: Mazak Mill HCN001
 
     - alias: nist # assigned agent alias - don't change!
