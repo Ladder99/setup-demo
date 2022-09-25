@@ -23,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 12,
-  "iteration": 1653491843500,
+  "id": 6,
+  "iteration": 1663941540386,
   "links": [
     {
       "asDropdown": false,
@@ -52,11 +52,12 @@
       },
       "id": 49,
       "panels": [],
-      "title": "Axis Load",
+      "title": "Axis Load ($device)",
       "type": "row"
     },
     {
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -98,7 +99,6 @@
         "y": 1
       },
       "id": 43,
-      "maxPerRow": 8,
       "options": {
         "orientation": "horizontal",
         "reduceOptions": {
@@ -111,7 +111,7 @@
         "text": {}
       },
       "pluginVersion": "8.2.2",
-      "repeat": "sample_load",
+      "repeat": "axis",
       "repeatDirection": "h",
       "targets": [
         {
@@ -119,7 +119,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value\nFROM history_float\nWHERE\n  device='$device'\n  and path in ($sample_load)\n  and $__timeFilter(\"time\")\norder by time desc\nlimit 1",
+          "rawSql": "SELECT time, value\nFROM history_float\nWHERE\n  path = concat('$device','/Axes/', '${axis:string}', '/Load')\n  and $__timeFilter(\"time\")\norder by time desc\nlimit 1",
           "refId": "loads repeater",
           "select": [
             [
@@ -141,7 +141,7 @@
           ]
         }
       ],
-      "title": "$sample_load",
+      "title": "$axis",
       "type": "gauge"
     },
     {
@@ -265,7 +265,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Availability\"\nFROM get_timeline('$device', 'availability', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"Availability\"\nFROM get_timeline('$device', '$device/Availability', $__from, $__to, true, '1d')\n",
           "refId": "Av",
           "select": [
             [
@@ -292,7 +292,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Controller Mode\"\nFROM get_timeline('$device', 'controller/path/controller_mode', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"Controller Mode\"\nFROM get_timeline('$device', '$device/Controller/Path/ControllerMode', $__from, $__to, true, '1d')\n",
           "refId": "CoM",
           "select": [
             [
@@ -319,7 +319,7 @@
           "hide": true,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Electric Power\"\nFROM get_timeline('$device', 'systems/electric/power_state', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"Electric Power\"\nFROM get_timeline('$device', '$device/Systems/Electric/PowerState', $__from, $__to, true, '1d')\n",
           "refId": "El",
           "select": [
             [
@@ -346,7 +346,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Emergency Stop\"\nFROM get_timeline('$device', 'controller/emergency_stop', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"Emergency Stop\"\nFROM get_timeline('$device', '$device/Controller/EmergencyStop', $__from, $__to, true, '1d')\n",
           "refId": "Em",
           "select": [
             [
@@ -373,7 +373,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', 'controller/path/execution', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', '$device/Controller/Path/Execution', $__from, $__to, true, '1d')\n",
           "refId": "Ex",
           "select": [
             [
@@ -400,7 +400,7 @@
           "hide": true,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Rotary Mode\"\nFROM get_timeline('$device', 'axes/c/rotary_mode', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"Rotary Mode\"\nFROM get_timeline('$device', '$device/Axes[C]/RotaryMode', $__from, $__to, true, '1d')\n",
           "refId": "Ro",
           "select": [
             [
@@ -427,7 +427,7 @@
           "hide": true,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"System Condition\"\nFROM get_timeline('$device', 'system_condition', $__from, $__to, true, '1d')\n",
+          "rawSql": "SELECT time, value as \"System Condition\"\nFROM get_timeline('$device', '$device/SystemCondition', $__from, $__to, true, '1d')\n",
           "refId": "Sys",
           "select": [
             [
@@ -454,7 +454,7 @@
           "hide": true,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Functional Mode\"\nFROM get_timeline('$device', 'functional_mode', $__from, $__to, true, '1h')\n",
+          "rawSql": "SELECT time, value as \"Functional Mode\"\nFROM get_timeline('$device', '$device/FunctionalMode', $__from, $__to, true, '1h')\n",
           "refId": "Fm",
           "select": [
             [
@@ -481,7 +481,7 @@
           "hide": true,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Operating\"\nFROM get_timeline('$device', 'equipment_mode-operating', $__from, $__to, true, '1h')\n",
+          "rawSql": "SELECT time, value as \"Equipment Mode / Operating\"\nFROM get_timeline('$device', '$device/EquipmentModeOperating', $__from, $__to, true, '1h')\n",
           "refId": "EmO",
           "select": [
             [
@@ -508,7 +508,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Working\"\nFROM get_timeline('$device', 'equipment_mode-working', $__from, $__to, true, '1h')\n",
+          "rawSql": "SELECT time, value as \"Equipment Mode / Working\"\nFROM get_timeline('$device', '$device/EquipmentModeWorking', $__from, $__to, true, '1h')\n",
           "refId": "EmW",
           "select": [
             [
@@ -535,7 +535,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Delay\"\nFROM get_timeline('$device', 'equipment_mode-delay', $__from, $__to, true, '1h')\n",
+          "rawSql": "SELECT time, value as \"Equipment Mode / Delay\"\nFROM get_timeline('$device', '$device/EquipmentModeDelay', $__from, $__to, true, '1h')\n",
           "refId": "EmD",
           "select": [
             [
@@ -562,7 +562,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Equipment Mode / Loaded\"\nFROM get_timeline('$device', 'equipment_mode-loaded', $__from, $__to, true, '1h')\n",
+          "rawSql": "SELECT time, value as \"Equipment Mode / Loaded\"\nFROM get_timeline('$device', '$device/EquipmentModeLoaded', $__from, $__to, true, '1h')\n",
           "refId": "EmL",
           "select": [
             [
@@ -625,7 +625,7 @@
         "value": "minutes"
       },
       "timeTextColor": "rgb(146, 146, 146)",
-      "title": "Timeline",
+      "title": "Timeline ($device)",
       "type": "natel-discrete-panel",
       "units": "short",
       "use12HourClock": false,
@@ -654,7 +654,7 @@
       },
       "id": 39,
       "panels": [],
-      "title": "Temperature/Load",
+      "title": "Temperature and Load",
       "type": "row"
     },
     {
@@ -673,7 +673,7 @@
         "y": 18
       },
       "hiddenSeries": false,
-      "id": 36,
+      "id": 54,
       "legend": {
         "avg": false,
         "current": false,
@@ -704,7 +704,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as c\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/c/temperature' and\n  $__timeFilter(\"time\")",
+          "rawSql": "SELECT time, substring(path, 'Axes/(.*)/Temperature') as axis, value as temp\nFROM history_float\nWHERE\n  path like '$device/Axes/%/Temperature' and\n  $__timeFilter(\"time\")\norder by time\n",
           "refId": "c",
           "select": [
             [
@@ -731,116 +731,8 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as x\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/x/temperature' and\n  $__timeFilter(\"time\")",
-          "refId": "x",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as y\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/y/temperature' and\n  $__timeFilter(\"time\")",
-          "refId": "y",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as z\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/z/temperature' and\n  $__timeFilter(\"time\")",
-          "refId": "z",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as c2\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/c2/temperature' and\n  $__timeFilter(\"time\")",
-          "refId": "c2",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as coolant\nFROM history_float\nWHERE\n  device='$device' and\n  path='systems/coolant/temperature' and\n  $__timeFilter(\"time\")",
-          "refId": "coolant",
+          "rawSql": "SELECT time, 'Coolant' as axis, value as \"temp Coolant\"\nFROM history_float\nWHERE\n  path='$device/Systems/Coolant/Temperature' and\n  $__timeFilter(\"time\")\norder by time",
+          "refId": "A",
           "select": [
             [
               {
@@ -865,7 +757,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Temperature",
+      "title": "Temperature (C) ($device)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -952,116 +844,8 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as c\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/c/load' and\n  $__timeFilter(\"time\")",
+          "rawSql": "SELECT time, substring(path, 'Axes/(.*)/Load') as axis, value as load\nFROM history_float\nWHERE\n  path like '$device/Axes/%/Load%' -- note the trailing %, if had to add [name]\n  and $__timeFilter(\"time\")\norder by time",
           "refId": "c",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as x\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/x/load' and\n  $__timeFilter(\"time\")",
-          "refId": "x",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as y\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/y/load' and\n  $__timeFilter(\"time\")",
-          "refId": "y",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as z\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/z/load' and\n  $__timeFilter(\"time\")",
-          "refId": "z",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as c2\nFROM history_float\nWHERE\n  device='$device' and\n  path='axes/c2/load' and\n  $__timeFilter(\"time\")",
-          "refId": "c2",
           "select": [
             [
               {
@@ -1086,7 +870,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Load",
+      "title": "Load ($device)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1192,7 +976,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as \"feedrate\"\nFROM history_float\nWHERE\n  device='$device' and\n  path='controller/path/path_feedrate-actual' and\n  $__timeFilter(\"time\")",
+          "rawSql": "SELECT\n  time,\n  substring(path, '$device/(.*)') as path,\n  value as feedrate\nFROM history_float\nWHERE\n  path like '$device/Axes/%/AxisFeedrate'\n  and $__timeFilter(\"time\")\nORDER BY time\n",
           "refId": "A",
           "select": [
             [
@@ -1218,7 +1002,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Path Feedrate (mm/sec)",
+      "title": "Path Feedrate (mm/sec) ($device)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1310,7 +1094,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as Actual\nFROM history_float\nWHERE\n  device='$device' and\n  -- path='axes/c/spindle_speed-actual' and\n  path='axes/c/rotary_velocity-actual' and\n  $__timeFilter(\"time\")",
+          "rawSql": "SELECT time, substring(path, '$device/(.*)') as path, value as speed\nFROM history_float\nWHERE\n  path like '$device/%RotaryVelocity%'\n  and $__timeFilter(\"time\")\norder by time asc",
           "refId": "A",
           "select": [
             [
@@ -1330,40 +1114,13 @@
               "type": "macro"
             }
           ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "hide": false,
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "SELECT time, value as Override\nFROM history_float\nWHERE\n  device='$device' and\n  -- path='axes/c/spindle-speed-override' and\n  path='controller/path/rotary_velocity_override' and\n  $__timeFilter(\"time\")",
-          "refId": "B",
-          "select": [
-            [
-              {
-                "params": ["value"],
-                "type": "column"
-              }
-            ]
-          ],
-          "table": "history_float",
-          "timeColumn": "\"time\"",
-          "timeColumnType": "timestamp",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Spindle Speed",
+      "title": "Spindle Speed ($device)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1403,7 +1160,7 @@
       }
     }
   ],
-  "refresh": "10s",
+  "refresh": "5s",
   "schemaVersion": 31,
   "style": "dark",
   "tags": ["client"],
@@ -1413,11 +1170,11 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "FBR-67E500-01",
-          "value": "FBR-67E500-01"
+          "text": "Mazak5701/Mill12345",
+          "value": "Mazak5701/Mill12345"
         },
         "datasource": null,
-        "definition": "select name from devices",
+        "definition": "select path from devices where path <> 'Main/Micro'",
         "description": "Device Name",
         "error": null,
         "hide": 0,
@@ -1426,7 +1183,7 @@
         "multi": false,
         "name": "device",
         "options": [],
-        "query": "select name from devices",
+        "query": "select path from devices where path <> 'Main/Micro'",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1439,31 +1196,31 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": ["axes/c/load", "axes/x/load", "axes/y/load", "axes/z/load"],
-          "value": ["axes/c/load", "axes/x/load", "axes/y/load", "axes/z/load"]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": null,
-        "definition": "select path from dataitems where category='SAMPLE' and type='LOAD'",
-        "description": "sample_load",
+        "definition": "select substring(path, 'Axes/(.*)/Load$') from dataitems where path like '$device/Axes/%/Load' order by path",
+        "description": null,
         "error": null,
         "hide": 2,
         "includeAll": true,
-        "label": "sample_load",
-        "multi": true,
-        "name": "sample_load",
+        "label": null,
+        "multi": false,
+        "name": "axis",
         "options": [],
-        "query": "select path from dataitems where category='SAMPLE' and type='LOAD'",
+        "query": "select substring(path, 'Axes/(.*)/Load$') from dataitems where path like '$device/Axes/%/Load' order by path",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 1,
+        "sort": 0,
         "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -1483,5 +1240,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 5
+  "version": 16
 }
