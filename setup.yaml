@@ -45,13 +45,13 @@ relay:
       url: http://mtconnect.mazakcorp.com:5701
       devices:
         - id: d1
-          alias: Mill 12345
+          alias: Mill-12345
 
     - alias: Mazak5717 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5717
       devices:
         - id: d1
-          alias: Mill 12346 # for display in grafana etc
+          alias: Mill-12346 # for display in grafana etc
           # ignore: true # set true to hide device in dashboards, pause recording, etc
           # # dataitem step translations
           # translations:
