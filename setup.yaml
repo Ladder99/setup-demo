@@ -1,10 +1,10 @@
 # client setup
-# read by the ladder99 adapter and relay services.
+# read by the ladder99 adapter, relay, and meter services.
+# see ladder99/setups/example/setup.yaml for more details.
 
 client:
   name: Demo # not used yet
-  # tell server what timezone to report results in, what timezone schedules are in etc
-  timezone: America/Chicago # currently just used by jobboss driver and availability js
+  timezone: America/Chicago # used by relay autoprune, jobboss driver, and availability meter
 
 # adapter reads this section to setup devices with their drivers,
 # which publish data to the agent via SHDR over TCP.
@@ -21,36 +21,37 @@ adapter:
         host: adapter # must match agent.cfg value
         port: 7890 # must match agent.cfg value
 
-# relay reads this section to know what agents to read data from.
-# warning: don't change the agent keys (eg micro) as they are used to synch data with db.
+# relay service reads this section to know what agents and devices to read data from.
+# can specify retention periods for data for agent, device, or dataitems - 1w minimum.
+# would clear all unneeded data weekly - then vacuum analyze db.
+# warning: don't change the agent aliases (eg main) as they are used to synch data with db.
 relay:
-  # retention: 1wk # could specify a top-level retention for all agents here
+  # retention: 1w # could specify a top-level retention for all agents here
   agents:
-    - alias: main # this is an arbitrary alias we assign to each agent, used by the db - don't change!
+    - alias: Main # this is an arbitrary alias we assign to each agent, used by the db - don't change!
       url: http://agent:5000 # url to the agent
+      # retention: 2d
       # ignore: true # can specify this to turn agent recording on/off
-      # retention: 2d # could clear all unneeded data at midnight - then vacuum analyze db?
       # without a list of devices here, relay would read all available in agent
       devices:
         - id: m
-          alias: Microcontroller # as displayed in grafana - can change. without this, just use device name?
+          alias: Micro
           # ignore: true # can specify this to turn device recording on/off
-          # could override settings per dataitem -
           # dataitems:
           #   - id: m-os
           #     retention: 1d
 
-    - alias: mazak5701 # assigned agent alias - don't change!
+    - alias: Mazak5701 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5701
       devices:
         - id: d1
-          alias: Mazak Mill 12345
+          alias: Mill 12345
 
-    - alias: mazak5717 # assigned agent alias - don't change!
+    - alias: Mazak5717 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5717
       devices:
         - id: d1
-          alias: Mazak Mill 12346 # for display in grafana etc
+          alias: Mill 12346 # for display in grafana etc
           # ignore: true # set true to hide device in dashboards, pause recording, etc
           # dataitem step translations
           translations:
@@ -58,50 +59,50 @@ relay:
             Cload: load-index
             Sload: load-spindle
 
-    - alias: mazak5719 # assigned agent alias - don't change!
+    - alias: Mazak5719 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5719
       devices:
         - id: d1
-          alias: Mazak Mill HCN001
+          alias: Mill-HCN001
 
-    - alias: nist # assigned agent alias - don't change!
+    - alias: NIST # assigned agent alias - don't change!
       url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
       devices:
         - id: GFAgie01
-          alias: Agie Micron
+          alias: Agie-Micron
 
         - id: Mazak01
-          alias: Mazak Integrix
+          alias: Integrix
 
         - id: Mazak03
-          alias: Mazak QuickTurn
+          alias: QuickTurn
 
         - id: Hurco01
-          alias: Hurco VMX24-1
+          alias: VMX24-1
 
         - id: Hurco02
-          alias: Hurco VMX24-2
+          alias: VMX24-2
 
         - id: Hurco03
-          alias: Hurco VMX24-3
+          alias: VMX24-3
 
         - id: Hurco04
-          alias: Hurco VMX24-4
+          alias: VMX24-4
 
         - id: Hurco06
-          alias: Hurco VMX64
+          alias: VMX64
 
-    - alias: silex # assigned agent alias - don't change!
+    - alias: Silex # assigned agent alias - don't change!
       url: http://10.1.10.187:5000
       devices:
         - id: FBR-100AN
-          alias: Silex FBR
+          alias: FBR-100AN
           # could specify path step translations per agent, or higher up, or any level
           translations:
-            x1: x
-            y1: y
-            z1: z
-            c1: c
+            # x1: x
+            # y1: y
+            # z1: z
+            # c1: c
             load[n.load-x_p1]: load
             load[n.load-y_p1]: load
             load[n.load-z_p1]: load
@@ -112,8 +113,17 @@ relay:
             interface_state[n.feedrate-1]: interface_state[feedrate]
             interface_state[n.m00-1]: interface_state[m00]
             interface_state[n.m01-1]: interface_state[m01]
+          dataitems:
+            - id: x1
+              pathstep: X
+            - id: y1
+              pathstep: Y
+            - id: z1
+              pathstep: Z
+            - id: C1
+              pathstep: C
 
-    - alias: fanuc # assigned agent alias - don't change
+    - alias: Fanuc # assigned agent alias - don't change
       url: http://10.1.10.145:5000
       ignore: true # don't record this agent yet
       # just record all devices and dataitems in this agent
