@@ -82,6 +82,8 @@ services:
     profiles:
       - base
 
+  # this must be turned off when running locally on windows!
+  # hence setting it to prod profile.
   traefik:
     profiles:
-      - base
+      - prod
