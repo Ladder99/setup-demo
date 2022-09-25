@@ -3,13 +3,13 @@ version: '3.8'
 services:
   adapter:
     profiles:
-      - all
+      - base
 
   agent:
     # try out agent2.0
     # image: ladder99/agent2:latest
     profiles:
-      - all
+      - base
     ports:
       - '5000:5000'
     labels:
@@ -21,7 +21,7 @@ services:
 
   # cloudbeaver:
   #   profiles:
-  #     - all
+  #     - base
   #   image: dbeaver/cloudbeaver:21.3.5 # use this for x86 etc
   #   labels:
   #     - traefik.enable=true
@@ -32,13 +32,13 @@ services:
 
   dozzle:
     profiles:
-      - all
+      - base
 
   # note: must set owner of folders with
   #   sudo chown -R 0:0 ../client-mazak/volumes/grafana
   grafana:
     profiles:
-      - all
+      - base
     #. can you set grafana_port to nothing?
     ports:
       - '$GRAFANA_PORT:3000/tcp'
@@ -51,7 +51,7 @@ services:
 
   # hue:
   #   profiles:
-  #     - all
+  #     - base
   #   dns: 8.8.8.8
   #   labels:
   #     - traefik.enable=true
@@ -62,7 +62,7 @@ services:
 
   pgadmin:
     profiles:
-      - all
+      - base
     dns: 8.8.8.8 # ? from hue?
     labels:
       - traefik.enable=true
@@ -73,25 +73,15 @@ services:
 
   postgres:
     profiles:
-      - all
+      - base
     # IMPORTANT: client might need to add this in compose-overrides.yaml
     ports:
       - '$PGPORT:5432/tcp'
 
   relay:
     profiles:
-      - all
-    environment:
-      # this can be an agent url, a comma-separated (no spaces) list of urls,
-      # or a .txt file with a url per line.
-      # set this in setup.yaml instead
-      # second one is also visible at http://bunker.mriiot.com:5000
-      # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.206:5000
-      # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717,http://10.1.10.145:5000
-      # AGENT_ENDPOINTS: http://mtconnect.mazakcorp.com:5717
-      # pass through from .env file with null
-      AGENT_ENDPOINTS: null
+      - base
 
   traefik:
     profiles:
-      - prod
+      - base

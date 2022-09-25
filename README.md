@@ -32,11 +32,9 @@ http://mtconnect.mazakcorp.com
 
 This setup uses a Raspberry Pi to host the Ladder99 pipeline (Relay, Postgres, Grafana), SQL access (pgadmin), and a reverse proxy (Traefik). 
 
-## Setup
-
 Login to the pi console here - https://teleport.ladder99.com/web/cluster/teleport.ladder99.com/console/node/d66da91e-e6f9-4599-84b5-3de313a2cd10/root
 
-Login as root then drop down to mriiot with `su - mriiot`.
+Login as root then drop down to mriiot with `su -- mriiot`, then `cd ~`.
 
 Make a directory ladder99
 
