@@ -53,11 +53,11 @@ relay:
         - id: d1
           alias: Mill 12346 # for display in grafana etc
           # ignore: true # set true to hide device in dashboards, pause recording, etc
-          # dataitem step translations
-          translations:
-            base: axes
-            Cload: load-index
-            Sload: load-spindle
+          # # dataitem step translations
+          # translations:
+          #   base: axes
+          #   Cload: load-index
+          #   Sload: load-spindle
 
     - alias: Mazak5719 # assigned agent alias - don't change!
       url: http://mtconnect.mazakcorp.com:5719
@@ -72,57 +72,57 @@ relay:
           alias: Agie-Micron
 
         - id: Mazak01
-          alias: Integrix
+          alias: Mazak-Integrix
 
         - id: Mazak03
-          alias: QuickTurn
+          alias: Mazak-QuickTurn
 
-        - id: Hurco01
-          alias: VMX24-1
+        # - id: Hurco01
+        #   alias: Hurco-VMX24-1
 
         - id: Hurco02
-          alias: VMX24-2
+          alias: Hurco-VMX24-2
 
         - id: Hurco03
-          alias: VMX24-3
+          alias: Hurco-VMX24-3
 
         - id: Hurco04
-          alias: VMX24-4
+          alias: Hurco-VMX24-4
 
-        - id: Hurco06
-          alias: VMX64
+        # - id: Hurco06
+        #   alias: Hurco-VMX64
 
-    - alias: Silex # assigned agent alias - don't change!
-      url: http://10.1.10.187:5000
-      devices:
-        - id: FBR-100AN
-          alias: FBR-100AN
-          # could specify path step translations per agent, or higher up, or any level
-          translations:
-            # x1: x
-            # y1: y
-            # z1: z
-            # c1: c
-            load[n.load-x_p1]: load
-            load[n.load-y_p1]: load
-            load[n.load-z_p1]: load
-            load[n.loadcurrentpercent-x_p1]: load[pct]
-            load[n.loadcurrentpercent-y_p1]: load[pct]
-            load[n.loadcurrentpercent-z_p1]: load[pct]
-            interface_state[n.dryrun-1]: interface_state[dryrun]
-            interface_state[n.feedrate-1]: interface_state[feedrate]
-            interface_state[n.m00-1]: interface_state[m00]
-            interface_state[n.m01-1]: interface_state[m01]
-          dataitems:
-            - id: x1
-              pathstep: X
-            - id: y1
-              pathstep: Y
-            - id: z1
-              pathstep: Z
-            - id: C1
-              pathstep: C
-
+    # - alias: Silex # assigned agent alias - don't change!
+    #   url: http://10.1.10.187:5000
+    #   devices:
+    #     - id: FBR-100AN
+    #       alias: FBR-100AN
+    #       # could specify path step translations per agent, or higher up, or any level
+    #       translations:
+    #         # x1: x
+    #         # y1: y
+    #         # z1: z
+    #         # c1: c
+    #         load[n.load-x_p1]: load
+    #         load[n.load-y_p1]: load
+    #         load[n.load-z_p1]: load
+    #         load[n.loadcurrentpercent-x_p1]: load[pct]
+    #         load[n.loadcurrentpercent-y_p1]: load[pct]
+    #         load[n.loadcurrentpercent-z_p1]: load[pct]
+    #         interface_state[n.dryrun-1]: interface_state[dryrun]
+    #         interface_state[n.feedrate-1]: interface_state[feedrate]
+    #         interface_state[n.m00-1]: interface_state[m00]
+    #         interface_state[n.m01-1]: interface_state[m01]
+    #       dataitems:
+    #         - id: x1
+    #           pathstep: X
+    #         - id: y1
+    #           pathstep: Y
+    #         - id: z1
+    #           pathstep: Z
+    #         - id: C1
+    #           pathstep: C
+    #
     - alias: Fanuc # assigned agent alias - don't change
       url: http://10.1.10.145:5000
       ignore: true # don't record this agent yet
