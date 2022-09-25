@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 13,
-  "iteration": 1654380255717,
+  "id": 8,
+  "iteration": 1664127424724,
   "links": [
     {
       "asDropdown": false,
@@ -93,7 +93,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as x\nFROM history_float\nWHERE \n  device='$device' and\n  -- path='axes/x/position-actual-machine' and\n  path in ('axes/x/position-actual','axes/x/position-actual-machine') and\n  $__timeFilter(\"time\");",
+          "rawSql": "SELECT\n  time,\n  -- substring(path, 'Axes/Linear[(.*)]/') as path,\n  value as x\nFROM history_float\nWHERE \n  path like '$device/Axes/Linear[X]/PositionActual'\n  and $__timeFilter(\"time\")\norder by time",
           "refId": "A",
           "select": [
             [
@@ -120,7 +120,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as y\nFROM history_float\nWHERE \n  device='$device' and\n  --path='axes/y/position-actual-machine' and\n  path in ('axes/y/position-actual','axes/y/position-actual-machine') and\n  $__timeFilter(\"time\");",
+          "rawSql": "SELECT\n  time,\n  -- substring(path, 'Axes/Linear[(.*)]/') as path,\n  value as y\nFROM history_float\nWHERE \n  path like '$device/Axes/Linear[Y]/PositionActual'\n  and $__timeFilter(\"time\")\norder by time",
           "refId": "B",
           "select": [
             [
@@ -147,7 +147,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  time,\n  value as z\nFROM history_float\nWHERE \n  device='$device' and\n  --path='axes/z/position-actual-machine' and\n  path in ('axes/z/position-actual','axes/z/position-actual-machine') and\n  $__timeFilter(\"time\");\n",
+          "rawSql": "SELECT\n  time,\n  -- substring(path, 'Axes/Linear[(.*)]/') as path,\n  value as z\nFROM history_float\nWHERE \n  path like '$device/Axes/Linear[Z]/PositionActual'\n  and $__timeFilter(\"time\")\norder by time",
           "refId": "C",
           "select": [
             [
@@ -295,7 +295,7 @@
           "hide": false,
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT date_trunc('sec', time) as _time,\n  avg(CASE path WHEN 'axes/x/position-actual' THEN value ELSE 0 END) AS x,\n  avg(CASE path WHEN 'axes/y/position-actual' THEN value ELSE 0 END) AS y\nFROM history_float\nWHERE\n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY _time\n;\n",
+          "rawSql": "SELECT date_trunc('sec', time) as _time,\n  avg(CASE path WHEN '$device/Axes/Linear[X]/PositionActual' THEN value ELSE 0 END) AS x,\n  avg(CASE path WHEN '$device/Axes/Linear[Y]/PositionActual' THEN value ELSE 0 END) AS y\nFROM history_float\nWHERE\n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY _time\n;\n",
           "refId": "A",
           "select": [
             [
@@ -420,7 +420,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT date_trunc('sec', time) as tt,\n  SUM(CASE path WHEN 'axes/x/position-actual' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN 'axes/y/position-actual' THEN value ELSE 0 END) AS y,\n  SUM(CASE path WHEN 'axes/z/position-actual' THEN value ELSE 0 END) AS z\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY tt\n;\n",
+          "rawSql": "SELECT date_trunc('sec', time) as tt,\n  SUM(CASE path WHEN '$device/Axes/Linear[X]/PositionActual' THEN value ELSE 0 END) AS x,\n  SUM(CASE path WHEN '$device/Axes/Linear[Y]/PositionActual' THEN value ELSE 0 END) AS y,\n  SUM(CASE path WHEN '$device/Axes/Linear[Z]/PositionActual' THEN value ELSE 0 END) AS z\nFROM history_float\nWHERE \n  device='$device' and\n  $__timeFilter(\"time\")\nGROUP BY tt\n;\n",
           "refId": "A",
           "select": [
             [
@@ -454,12 +454,12 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "GFAgie01",
-          "value": "GFAgie01"
+          "selected": true,
+          "text": "NIST/Agie-Micron",
+          "value": "NIST/Agie-Micron"
         },
         "datasource": null,
-        "definition": "select name from devices",
+        "definition": "select path from devices",
         "description": "Device Name",
         "error": null,
         "hide": 0,
@@ -468,7 +468,7 @@
         "multi": false,
         "name": "device",
         "options": [],
-        "query": "select name from devices",
+        "query": "select path from devices",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -485,5 +485,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 8
+  "version": 4
 }
