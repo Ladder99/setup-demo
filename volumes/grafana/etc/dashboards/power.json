@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 6,
-  "iteration": 1664128536071,
+  "iteration": 1664132720610,
   "links": [
     {
       "asDropdown": false,
@@ -134,7 +134,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', '$device/Controller/Path/Execution', $__from, $__to)",
+          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device/Controller/Path/Execution', $__from, $__to)",
           "refId": "A",
           "select": [
             [
@@ -258,7 +258,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "-- select value from history_all \n-- where device='$device' and path='controller/path/message' \n-- order by time desc limit 1\nselect value from get_last_value('$device', 'Controller/Path/Message')",
+          "rawSql": "-- select value from history_all \n-- where device='$device' and path='controller/path/message' \n-- order by time desc limit 1\nselect value from get_last_value('$device/Controller/Path/Message')",
           "refId": "A",
           "select": [
             [
@@ -331,7 +331,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "-- select value from history_all \n-- where device='$device' and path='controller/path/part_count-complete' \n-- order by time desc limit 1;\n-- this won't work with a specific time range, eg 2022-05-11 to 12\nselect value from get_last_value('$device', 'controller/path/part_count-complete')",
+          "rawSql": "-- select value from history_all \n-- where device='$device' and path='controller/path/part_count-complete' \n-- order by time desc limit 1;\n-- this won't work with a specific time range, eg 2022-05-11 to 12\nselect value from get_last_value('$device/Controller/Path/PartCountComplete')",
           "refId": "A",
           "select": [
             [
@@ -924,7 +924,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "NIST/Agie-Micron",
           "value": "NIST/Agie-Micron"
         },
@@ -948,12 +948,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Power Consumption",
   "uid": "power2",
-  "version": 2
+  "version": 4
 }
