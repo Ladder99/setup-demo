@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 11,
-  "iteration": 1654270718831,
+  "id": 6,
+  "iteration": 1664128536071,
   "links": [
     {
       "asDropdown": false,
@@ -134,7 +134,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', 'controller/path/execution', $__from, $__to)",
+          "rawSql": "SELECT time, value as \"Execution\"\nFROM get_timeline('$device', '$device/Controller/Path/Execution', $__from, $__to)",
           "refId": "A",
           "select": [
             [
@@ -258,7 +258,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "-- select value from history_all \n-- where device='$device' and path='controller/path/message' \n-- order by time desc limit 1\nselect value from get_last_value('$device', 'controller/path/message')",
+          "rawSql": "-- select value from history_all \n-- where device='$device' and path='controller/path/message' \n-- order by time desc limit 1\nselect value from get_last_value('$device', 'Controller/Path/Message')",
           "refId": "A",
           "select": [
             [
@@ -925,9 +925,11 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "f13_100",
-          "value": "f13_100"
+          "text": "NIST/Agie-Micron",
+          "value": "NIST/Agie-Micron"
         },
+        "datasource": null,
+        "definition": "select path from devices order by path",
         "description": null,
         "error": null,
         "hide": 0,
@@ -935,32 +937,23 @@
         "label": null,
         "multi": false,
         "name": "device",
-        "options": [
-          {
-            "selected": false,
-            "text": "f13_50",
-            "value": "f13_50"
-          },
-          {
-            "selected": true,
-            "text": "f13_100",
-            "value": "f13_100"
-          }
-        ],
-        "query": "f13_50,f13_100",
-        "queryValue": "",
+        "options": [],
+        "query": "select path from devices order by path",
+        "refresh": 1,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "custom"
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "2022-03-08T17:29:36.175Z",
-    "to": "2022-03-08T18:21:08.703Z"
+    "from": "now-6h",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Power Consumption",
   "uid": "power2",
-  "version": 11
+  "version": 2
 }
