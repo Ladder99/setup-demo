@@ -4,6 +4,7 @@ services:
   adapter:
     profiles:
       - base
+    build: ./adapter
 
   agent:
     # try out agent2.0
@@ -75,12 +76,13 @@ services:
     profiles:
       - base
     # IMPORTANT: client might need to add this in compose-overrides.yaml
-    ports:
-      - '$PGPORT:5432/tcp'
+    # ports:
+    #   - '$PGPORT:5432/tcp'
 
   relay:
     profiles:
       - base
+    build: ./relay
 
   # this must be turned off when running locally on windows!
   # hence setting it to prod profile.
