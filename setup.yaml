@@ -41,13 +41,13 @@ relay:
           #   - id: m-os
           #     retention: 1d
 
-    - alias: Mazak5701 # assigned agent alias - don't change!
+    - alias: Mazak5701 # assign an agent alias - don't change
       url: http://mtconnect.mazakcorp.com:5701
       devices:
         - id: d1
           alias: Mill-12345
 
-    - alias: Mazak5717 # assigned agent alias - don't change!
+    - alias: Mazak5717 # assign an agent alias - don't change
       url: http://mtconnect.mazakcorp.com:5717
       devices:
         - id: d1
@@ -59,13 +59,13 @@ relay:
           #   Cload: load-index
           #   Sload: load-spindle
 
-    - alias: Mazak5719 # assigned agent alias - don't change!
+    - alias: Mazak5719 # assign an agent alias - don't change
       url: http://mtconnect.mazakcorp.com:5719
       devices:
         - id: d1
           alias: Mill-HCN001
 
-    - alias: NIST # assigned agent alias - don't change!
+    - alias: NIST # assign an agent alias - don't change
       url: https://smstestbed.nist.gov/vds # agie, mazak, hurco machines
       devices:
         - id: GFAgie01
@@ -97,12 +97,17 @@ relay:
     #   devices:
     #     - id: FBR-100AN
     #       alias: FBR-100AN
-    #       # could specify path step translations per agent, or higher up, or any level
+    #       dataitems:
+    #         - id: x1
+    #           pathstep: X
+    #         - id: y1
+    #           pathstep: Y
+    #         - id: z1
+    #           pathstep: Z
+    #         - id: C1
+    #           pathstep: C
+    #       # change these to { id, pathstep } -
     #       translations:
-    #         # x1: x
-    #         # y1: y
-    #         # z1: z
-    #         # c1: c
     #         load[n.load-x_p1]: load
     #         load[n.load-y_p1]: load
     #         load[n.load-z_p1]: load
@@ -113,17 +118,10 @@ relay:
     #         interface_state[n.feedrate-1]: interface_state[feedrate]
     #         interface_state[n.m00-1]: interface_state[m00]
     #         interface_state[n.m01-1]: interface_state[m01]
-    #       dataitems:
-    #         - id: x1
-    #           pathstep: X
-    #         - id: y1
-    #           pathstep: Y
-    #         - id: z1
-    #           pathstep: Z
-    #         - id: C1
-    #           pathstep: C
     #
-    - alias: Fanuc # assigned agent alias - don't change
+    - alias: Fanuc # assign an agent alias - don't change
       url: http://10.1.10.145:5000
-      ignore: true # don't record this agent yet
-      # just record all devices and dataitems in this agent
+      # ignore: true # don't record this agent
+      devices:
+        - id: f_sim
+          alias: Sim # change once we have a real machine
