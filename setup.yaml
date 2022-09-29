@@ -92,6 +92,23 @@ relay:
         # - id: Hurco06
         #   alias: Hurco-VMX64
 
+    - alias: Fanuc # assign an agent alias - don't change
+      url: http://10.1.10.145:5000
+      # ignore: true # don't record this agent
+
+      devices:
+        - id: f_sim
+          alias: Sim # change once have real name
+
+        - id: f13_50
+          alias: F50
+          ignore: true # don't record this device
+
+        - id: f13_100
+          alias: F100
+          ignore: true # don't record this device
+
+
     # - alias: Silex # assigned agent alias - don't change!
     #   url: http://10.1.10.187:5000
     #   devices:
@@ -119,9 +136,3 @@ relay:
     #         interface_state[n.m00-1]: interface_state[m00]
     #         interface_state[n.m01-1]: interface_state[m01]
     #
-    - alias: Fanuc # assign an agent alias - don't change
-      url: http://10.1.10.145:5000
-      # ignore: true # don't record this agent
-      devices:
-        - id: f_sim
-          alias: Sim # change once we have a real machine
