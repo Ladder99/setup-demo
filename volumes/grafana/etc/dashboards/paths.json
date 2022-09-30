@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 8,
-  "iteration": 1664127424724,
+  "id": 7,
+  "iteration": 1664528916837,
   "links": [
     {
       "asDropdown": false,
@@ -459,7 +459,7 @@
           "value": "NIST/Agie-Micron"
         },
         "datasource": null,
-        "definition": "select path from devices",
+        "definition": "select path from devices where path not like '%/Micro' order by path",
         "description": "Device Name",
         "error": null,
         "hide": 0,
@@ -468,7 +468,7 @@
         "multi": false,
         "name": "device",
         "options": [],
-        "query": "select path from devices",
+        "query": "select path from devices where path not like '%/Micro' order by path",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -485,5 +485,5 @@
   "timezone": "",
   "title": "Paths",
   "uid": "paths",
-  "version": 4
+  "version": 2
 }
