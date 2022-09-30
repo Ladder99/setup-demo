@@ -23,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 7,
-  "iteration": 1664132534953,
+  "id": 6,
+  "iteration": 1664526561003,
   "links": [
     {
       "asDropdown": false,
@@ -1169,12 +1169,12 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "Mazak5701/Mill-12345",
-          "value": "Mazak5701/Mill-12345"
+          "selected": true,
+          "text": "Fanuc/Sim",
+          "value": "Fanuc/Sim"
         },
         "datasource": null,
-        "definition": "select path from devices where path <> 'Main/Micro'",
+        "definition": "select path from devices where path not like '%/Micro'",
         "description": "Device Name",
         "error": null,
         "hide": 0,
@@ -1183,7 +1183,7 @@
         "multi": false,
         "name": "device",
         "options": [],
-        "query": "select path from devices where path <> 'Main/Micro'",
+        "query": "select path from devices where path not like '%/Micro'",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
