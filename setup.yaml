@@ -77,8 +77,9 @@ relay:
         - id: Mazak03
           alias: Mazak-QuickTurn
 
-        # - id: Hurco01
-        #   alias: Hurco-VMX24-1
+        - id: Hurco01
+          alias: Hurco-VMX24-1
+          ignore: true
 
         - id: Hurco02
           alias: Hurco-VMX24-2
@@ -89,8 +90,9 @@ relay:
         - id: Hurco04
           alias: Hurco-VMX24-4
 
-        # - id: Hurco06
-        #   alias: Hurco-VMX64
+        - id: Hurco06
+          alias: Hurco-VMX64
+          ignore: true
 
     - alias: Fanuc # assign an agent alias - don't change
       url: http://10.1.10.145:5000
