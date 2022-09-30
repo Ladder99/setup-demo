@@ -72,12 +72,13 @@ services:
       - traefik.http.routers.pgadmin.tls.certresolver=lets-encrypt
       - traefik.port=8888 # ? from hue? should be 5050?
 
+  portainer:
+    profiles:
+      - base
+
   postgres:
     profiles:
       - base
-    # IMPORTANT: client might need to add this in compose-overrides.yaml
-    # ports:
-    #   - '$PGPORT:5432/tcp'
 
   relay:
     profiles:
