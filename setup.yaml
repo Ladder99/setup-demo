@@ -95,6 +95,9 @@ relay:
       # ignore: true # don't record this agent
 
       devices:
+        - id: m
+          alias: Micro
+
         - id: f_sim
           alias: Sim # change once have real name
 
