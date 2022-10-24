@@ -12,7 +12,7 @@ The XML underlying the dashboard is available here - http://mtconnect.mazakcorp.
 
 Ladder99 is used to read data from an MTConnect Agent - the data is written to a SQL database (Postgres), which is then read by the dashboard (Grafana).
 
-Ladder99 is a free and open-source pipeline for reading data from devices and MTConnect Agents and transforming it to easily digestible dashboards. For more information see https://github.com/Ladder99/ladder99-ce.
+Ladder99 is a free and open-source pipeline for reading data from devices and MTConnect Agents and transforming it to easily digestible dashboards. For more information see https://github.com/Ladder99/ladder99.
 
 ## Links
 
@@ -41,21 +41,18 @@ Make a directory ladder99
     mkdir ladder99
     cd ladder99
 
-Clone this repo and ladder99-ce there
+Clone this repo and ladder99 there
 
-    git clone https://github.com/Ladder99/ladder99-ce
+    git clone https://github.com/Ladder99/ladder99
     git clone https://github.com/Ladder99/client-demo
-    cd ladder99-ce
+    cd ladder99
     git checkout develop
 
 Start all Docker services (Grafana, Postgres, Relay, pgadmin, Traefik) -
 
-    ./start demo all
+    ./l99 start demo
 
-- you'll be asked to edit an .env file - be sure to set the Postgres password, 
-and add the MTConnect Agents you want to query - e.g. 
-
-    AGENT_ENDPOINTS=http://mtconnect.mazakcorp.com:5717
+- you'll be asked to edit an .env file - be sure to set the Postgres password.
 
 
 ## Status
@@ -103,20 +100,20 @@ eg
 
 To update code when github repos are updated
 
-    cd ~/ladder99/ladder99-ce
-    ./update demo
+    cd ~/ladder99/ladder99
+    ./l99 update demo
 
-this will update both ladder99-ce and client-demo repos.
+this will update both ladder99 and client-demo repos.
 
 If you need to update the running Grafana dashboard,
 
     docker stop grafana
-    ./start demo grafana
+    ./l99 start demo grafana
 
 To restart the Relay service,
 
     docker stop relay
-    ./start demo relay
+    ./l99 start demo relay
 
 ## Traefik
 

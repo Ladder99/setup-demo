@@ -12,10 +12,10 @@ client:
 adapter:
   devices:
     - id: m # must match id in agent.xml
-      name: Micro # must match name in agent.cfg and agent.xml
+      name: Host # must match name in agent.cfg and agent.xml
       sources:
-        - module: micro # defines inputs and outputs with yaml files
-          driver: micro # adapter plugin - manages protocol and payload
+        - module: host # defines inputs and outputs with yaml files
+          driver: host # adapter plugin - manages protocol and payload
       outputs:
         agent:
           host: adapter # must match agent.cfg value
@@ -34,8 +34,8 @@ relay:
       # ignore: true # can specify this to turn agent recording on/off
       # without a list of devices here, relay would read all available in agent
       devices:
-        - id: m
-          alias: Micro
+        - id: host
+          alias: Host
           # ignore: true # can specify this to turn device recording on/off
           # dataitems:
           #   - id: m-os
@@ -95,8 +95,8 @@ relay:
       # ignore: true # don't record this agent
 
       devices:
-        - id: m
-          alias: Micro
+        - id: host
+          alias: Host
 
         - id: f_sim
           alias: Sim # change once have real name
