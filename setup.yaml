@@ -11,7 +11,7 @@ client:
 # the agent is a service that communicates over the tcp channel specified in agent.cfg.
 adapter:
   devices:
-    - id: m # must match id in agent.xml
+    - id: host # must match id in agent.xml
       name: Host # must match name in agent.cfg and agent.xml
       sources:
         - module: host # defines inputs and outputs with yaml files
