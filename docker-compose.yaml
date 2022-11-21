@@ -4,7 +4,7 @@ services:
   adapter:
     profiles:
       - base
-    build: ./adapter
+    build: ./services/adapter
 
   agent:
     # try out agent2.0
@@ -83,7 +83,7 @@ services:
   relay:
     profiles:
       - base
-    build: ./relay
+    build: ./services/relay
 
   # this must be turned off when running locally on windows!
   # hence setting it to prod profile.
