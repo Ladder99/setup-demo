@@ -6,8 +6,6 @@ services:
       - base
 
   agent:
-    # try out agent2.0
-    # image: ladder99/agent2:latest
     profiles:
       - base
     ports:
