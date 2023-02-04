@@ -32,8 +32,6 @@ services:
     profiles:
       - base
 
-  # note: must set owner of folders with
-  #   sudo chown -R 0:0 ../client-mazak/volumes/grafana
   grafana:
     profiles:
       - base
