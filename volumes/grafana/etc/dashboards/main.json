@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 6,
-  "iteration": 1664528723951,
+  "iteration": 1675686814766,
   "links": [
     {
       "asDropdown": false,
@@ -1170,8 +1170,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "Fanuc/Sim",
-          "value": "Fanuc/Sim"
+          "text": "Mazak5701/Mill-12345",
+          "value": "Mazak5701/Mill-12345"
         },
         "datasource": null,
         "definition": "select path from devices where path not like '%/Host'",
@@ -1240,5 +1240,5 @@
   "timezone": "",
   "title": "Main",
   "uid": "main",
-  "version": 4
+  "version": 2
 }
